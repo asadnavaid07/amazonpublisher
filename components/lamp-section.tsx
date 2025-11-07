@@ -17,10 +17,6 @@ export default function LampSection() {
         }}
         className="text-center"
       >
-        <h2 className="text-4xl md:text-6xl font-bold text-foreground mb-6">Illuminate Your Publishing Journey</h2>
-        <p className="text-lg text-muted-foreground max-w-2xl mx-auto">
-          Let our expert team guide you through every step of the publishing process with clarity and precision.
-        </p>
       </motion.div>
     </LampContainer>
   )

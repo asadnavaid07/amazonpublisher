@@ -9,11 +9,13 @@ export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
 
   const navItems = [
-    { label: "Home", href: "#home" },
+    // { label: "Home", href: "#home" },
     { label: "Services", href: "#services" },
     { label: "Process", href: "#process" },
     { label: "Testimonials", href: "#testimonials" },
     { label: "Contact", href: "#contact" },
+    { label: "About", href: "/about-us" },
+
   ]
 
   return (
@@ -43,7 +45,7 @@ export default function Header() {
 
           {/* CTA Button */}
           <div className="hidden md:flex items-center gap-3">
-            <Link href="#login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Log in</Link>
+            {/* <Link href="#login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Log in</Link> */}
             <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">Contact Us</Button>
           </div>
 

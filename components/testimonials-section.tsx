@@ -30,7 +30,7 @@ export function TestimonialCard({ description, name, img, role, className, ...pr
   return (
     <div
       className={cn(
-        "mb-4 flex w-full cursor-pointer break-inside-avoid flex-col items-center justify-between gap-6 rounded-xl p-4",
+        "mb-1 flex w-full cursor-pointer break-inside-avoid flex-col items-center justify-between gap-6 rounded-xl p-4",
         "border-border bg-card/50 border shadow-sm",
         "transition-all duration-300 hover:-translate-y-0.5 hover:shadow-md",
         className,
@@ -224,20 +224,21 @@ export default function TestimonialsSection() {
                   "[--duration:70s]": i === 3,
                 })}
               >
-                {testimonials.slice(i * 3, (i + 1) * 3).map((card, idx) => (
-                  <motion.div
-                    key={idx}
-                    initial={{ opacity: 0 }}
-                    whileInView={{ opacity: 1 }}
-                    viewport={{ once: true }}
-                    transition={{
-                      delay: Math.random() * 0.8,
-                      duration: 1.2,
-                    }}
-                  >
-                    <TestimonialCard {...card} />
-                  </motion.div>
-                ))}
+                {[...testimonials.slice(i * 3, (i + 1) * 3), ...testimonials.slice(i * 3, (i + 1) * 3)].map((card, idx) => (
+  <motion.div
+    key={idx}
+    initial={{ opacity: 0 }}
+    whileInView={{ opacity: 1 }}
+    viewport={{ once: true }}
+    transition={{
+      delay: Math.random() * 0.8,
+      duration: 1.2,
+    }}
+  >
+    <TestimonialCard {...card} />
+  </motion.div>
+))}
+
               </Marquee>
             ))}
         </div>

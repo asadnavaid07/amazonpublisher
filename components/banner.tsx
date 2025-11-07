@@ -83,7 +83,7 @@ export default function Banner({ banner }: BannerProps) {
           className="object-cover object-center"
           priority
         />
-        <div className="absolute inset-0 bg-primary mix-blend-multiply opacity-90" />
+        <div className="absolute inset-0 bg-primary mix-blend-multiply opacity-10" />
       </div>
 
       {/* Container replacement for this project */}
