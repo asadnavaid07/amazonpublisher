@@ -8,8 +8,9 @@ import ProcessTimeline from "@/components/process-timeline"
 import TestimonialsSection from "@/components/testimonials-section"
 import CTASection from "@/components/cta-section"
 import Footer from "@/components/footer"
+import FAQs from "@/components/faqs"
 // import LampSection from "@/components/lamp-section"
-// import BonusSection from "@/components/bonus-section"
+import BonusSection from "@/components/bonus-section"
 
 export default function Home() {
   return (
@@ -37,12 +38,13 @@ export default function Home() {
       <HeroSection />
       {/* <LampSection /> */}
       <BookCarousel />
-       {/* <FeaturesSection /> */}
-      {/* <ServicesSection /> */}
+       <FeaturesSection />
+      <ServicesSection />
       <ProcessTimeline /> 
-      {/* <BonusSection/> */}
-      {/* <TestimonialsSection /> */}
+      <BonusSection/>
+      <TestimonialsSection />
       <CTASection />
+      <FAQs/>
       <Footer />
     </main>
   )

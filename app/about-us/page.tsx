@@ -72,8 +72,8 @@ export default function AboutUsPage() {
     <div className="bg-black">
       <Header />
       {/* Hero Section */}
-      <section className="relative py-35 overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-br from-primary/80 via-background to-background" />
+      <section className="relative py-35 overflow-hidden bg-white">
+        <div className="absolute inset-0 bg-gradient-to-br from-primary/20 via-white to-white" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
@@ -92,10 +92,10 @@ export default function AboutUsPage() {
               </div>
             </motion.div>
             <h1 className="text-5xl sm:text-6xl font-bold text-black mb-6 text-balance">
-              Who We Are
+              Who <span className="bg-primary text-primary-foreground px-3 pb-1 rounded-xl">We Are</span>
             </h1>
             <p className="text-xl text-gray-800 leading-relaxed text-balance">
-              Born from a passion for storytelling and driven by a commitment to excellence, Amazon Author Partners was founded to serve writers who dream big—and deliver books that stand out.
+              Born from a passion for storytelling and driven by a commitment to excellence, Amazon Author Partners was founded to serve writers who dream big and deliver books that stand out.
             </p>
           </motion.div>
         </div>
@@ -232,6 +232,7 @@ export default function AboutUsPage() {
 
       {/* Timeline/Milestones */}
       <section className="py-20 bg-white">
+        
         <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}

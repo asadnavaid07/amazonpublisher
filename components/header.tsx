@@ -1,3 +1,89 @@
+// "use client"
+
+// import { useState } from "react"
+// import Link from "next/link"
+// import { Menu, X } from "lucide-react"
+// import { Button } from "@/components/ui/button"
+
+// export default function Header() {
+//   const [isOpen, setIsOpen] = useState(false)
+
+//   const navItems = [
+    
+//     { label: "Services", href: "/services" },
+//     { label: "Blogs", href: "/blogs" },
+//     { label: "About", href: "/about-us" },
+
+//   ]
+
+//   return (
+//     <header className="fixed top-0 z-[1000] w-full">
+//       <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+//         <div className="flex items-center justify-between h-16 rounded-xl px-3 md:px-5 mt-3 md:mt-4 bg-background/70 backdrop-blur-md border border-border shadow-[0_0_0_1px_rgba(236,162,18,0.15)]">
+//           {/* Logo */}
+//           <Link href="/" className="flex items-center gap-3 group">
+//             {/* <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-[inset_0_0_0_2px_#111]">
+//               <span className="font-bold text-lg tracking-wide">EP</span>
+//             </div> */}
+//             <span className="hidden sm:inline font-bold text-lg text-foreground group-hover:text-primary transition-colors">Amazon Publisher</span>
+//           </Link>
+
+//           {/* Desktop Navigation */}
+//           <div className="hidden md:flex items-center gap-8">
+//             {navItems.map((item) => (
+//               <Link
+//                 key={item.href}
+//                 href={item.href}
+//                 className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+//               >
+//                 {item.label}
+//               </Link>
+//             ))}
+//           </div>
+
+//           {/* CTA Button */}
+//           <Link href="/contact">
+//           <div className="hidden md:flex items-center gap-3">
+//             {/* <Link href="#login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Log in</Link> */}
+//             <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">Contact Us</Button>
+//           </div></Link>
+
+//           {/* Mobile Menu Button */}
+//           <button
+//             onClick={() => setIsOpen(!isOpen)}
+//             className="md:hidden p-2 hover:bg-secondary rounded-lg transition-colors"
+//             aria-label="Toggle menu"
+//           >
+//             {isOpen ? <X size={24} /> : <Menu size={24} />}
+//           </button>
+//         </div>
+
+//         {/* Mobile Navigation */}
+//         {isOpen && (
+//           <div className="md:hidden pb-4 border-t border-border bg-background/80 backdrop-blur">
+//             <div className="flex flex-col gap-3 pt-4">
+//               {navItems.map((item) => (
+//                 <Link
+//                   key={item.href}
+//                   href={item.href}
+//                   className="px-4 py-2 text-sm font-medium text-muted-foreground hover:text-foreground hover:bg-secondary rounded-lg transition-colors"
+//                   onClick={() => setIsOpen(false)}
+//                 >
+//                   {item.label}
+//                 </Link>
+//               ))}
+//               <Button className="w-full bg-primary hover:bg-primary/90 text-primary-foreground mt-2">
+//                 Contact Us
+//               </Button>
+//             </div>
+//           </div>
+//         )}
+//       </nav>
+//     </header>
+//   )
+// }
+
+
 "use client"
 
 import { useState } from "react"
@@ -7,15 +93,21 @@ import { Button } from "@/components/ui/button"
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false)
+  const [isServicesOpen, setIsServicesOpen] = useState(false)
 
   const navItems = [
-    // { label: "Home", href: "#home" },
-    { label: "Services", href: "#services" },
-    { label: "Process", href: "#process" },
-    { label: "Testimonials", href: "#testimonials" },
-    { label: "Contact", href: "#contact" },
+    { label: "Services", href: "/services" },
+    { label: "Blogs", href: "/blogs" },
     { label: "About", href: "/about-us" },
+  ]
 
+  const serviceItems = [
+    "Ghostwriting",
+    "Editing & Proofreading",
+    "Publishing & Distribution",
+    "Book Cover & Design",
+    "Book Promotion & Marketing",
+    "E-Book & Audio Book Production",
   ]
 
   return (
@@ -24,30 +116,69 @@ export default function Header() {
         <div className="flex items-center justify-between h-16 rounded-xl px-3 md:px-5 mt-3 md:mt-4 bg-background/70 backdrop-blur-md border border-border shadow-[0_0_0_1px_rgba(236,162,18,0.15)]">
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 group">
-            {/* <div className="w-10 h-10 rounded-lg flex items-center justify-center bg-gradient-to-br from-primary to-primary/80 text-primary-foreground shadow-[inset_0_0_0_2px_#111]">
-              <span className="font-bold text-lg tracking-wide">EP</span>
-            </div> */}
-            <span className="hidden sm:inline font-bold text-lg text-foreground group-hover:text-primary transition-colors">Amazon Publisher</span>
+            <span className="hidden sm:inline font-bold text-lg text-foreground group-hover:text-primary transition-colors">
+              Amazon Publisher
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center gap-8">
-            {navItems.map((item) => (
-              <Link
-                key={item.href}
-                href={item.href}
-                className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {item.label}
-              </Link>
-            ))}
+          <div className="hidden md:flex items-center gap-8 relative">
+            {navItems.map((item) =>
+              item.label === "Services" ? (
+                <div
+                  key={item.href}
+                  className="relative"
+                  onMouseEnter={() => setIsServicesOpen(true)}
+                  onMouseLeave={() => setIsServicesOpen(false)}
+                >
+                  {/* "Services" clickable heading */}
+                  <Link
+                    href={item.href}
+                    className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                  >
+                    {item.label}
+                  </Link>
+
+                  {/* Dropdown (non-clickable items) */}
+                  <div
+                    className={`absolute left-0 top-full mt-2 w-56 bg-background border border-border rounded-2xl shadow-lg transition-all duration-300 ease-in-out ${
+                      isServicesOpen
+                        ? "opacity-100 translate-y-0 visible"
+                        : "opacity-0 -translate-y-2 invisible"
+                    }`}
+                  >
+                    <ul className="py-2">
+                      {serviceItems.map((service) => (
+                        <li
+                          key={service}
+                          className="px-4 py-2 text-sm text-muted-foreground hover:text-foreground hover:bg-secondary/50 transition-colors rounded-lg cursor-default"
+                        >
+                          {service}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              ) : (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors"
+                >
+                  {item.label}
+                </Link>
+              )
+            )}
           </div>
 
           {/* CTA Button */}
-          <div className="hidden md:flex items-center gap-3">
-            {/* <Link href="#login" className="text-sm font-medium text-muted-foreground hover:text-foreground transition-colors">Log in</Link> */}
-            <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">Contact Us</Button>
-          </div>
+          <Link href="/contact">
+            <div className="hidden md:flex items-center gap-3">
+              <Button className="bg-primary hover:bg-primary/90 text-primary-foreground">
+                Contact Us
+              </Button>
+            </div>
+          </Link>
 
           {/* Mobile Menu Button */}
           <button
@@ -61,7 +192,7 @@ export default function Header() {
 
         {/* Mobile Navigation */}
         {isOpen && (
-          <div className="md:hidden pb-4 border-t border-border bg-background/80 backdrop-blur">
+          <div className="md:hidden pb-4 border-t border-border bg-background">
             <div className="flex flex-col gap-3 pt-4">
               {navItems.map((item) => (
                 <Link

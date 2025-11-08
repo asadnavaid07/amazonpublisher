@@ -73,7 +73,7 @@ export default function ServicesSection() {
                 transition={{ duration: 0.5, delay: index * 0.08 }}
                 className="w-full max-w-sm"
               >
-                <GlowCard glowColor="yellow" size="md" className="w-full">
+                <GlowCard glowColor="yellow" size="md" className="w-full " height={250} >
                   <div className="flex flex-col h-full justify-between">
                     <div>
                       <div className="mb-4 inline-block p-3 bg-yellow-500/10 rounded-lg">

@@ -12,28 +12,25 @@ const features = [
     description:
       "Know exactly what you’re paying for at every stage of the publishing process with clear milestones and real-time progress updates.",
     image:
-      "https://images.unsplash.com/photo-1519681393784-d120267933ba?auto=format&fit=crop&w=900&q=80",
-  },
+      "/pricing.jpg"  },
   {
     title: "Dedicated Author Portal",
     description:
       "Access your personal author dashboard to track progress, review drafts, and communicate directly with our publishing team.",
     image:
-      "https://images.unsplash.com/photo-1517430816045-df4b7de11d1d?auto=format&fit=crop&w=900&q=80",
-  },
+      "/dashboard.jpg"  },
   {
     title: "Global Distribution Without Hidden Costs",
     description:
       "Your book reaches worldwide retailers—Amazon, Barnes & Noble, Apple Books, and more—without surprise fees or restrictions.",
     image:
-      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=80",
-  },
+      "/books3.jpg"  },
   {
     title: "Post-Launch Support Built-In",
     description:
       "Our team stays with you after publication, helping you promote, market, and grow your author brand long after launch day.",
     image:
-      "https://images.unsplash.com/photo-1524995997946-a1c2e315a42f?auto=format&fit=crop&w=900&q=80",
+    "/team.jpg"
   },
 ]
 

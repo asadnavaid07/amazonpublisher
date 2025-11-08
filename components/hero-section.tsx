@@ -55,7 +55,7 @@ export default function HeroSection() {
               </Button>
               
               {/* Enhanced Video Preview Badge */}
-              <button className="relative group mt-3 px-6 py-3 rounded-full border border-primary/30 bg-gradient-to-r from-primary/5 to-primary/10 hover:border-primary/50 transition-all duration-300 overflow-hidden">
+              {/* <button className="relative group mt-3 px-6 py-3 rounded-full border border-primary/30 bg-gradient-to-r from-primary/5 to-primary/10 hover:border-primary/50 transition-all duration-300 overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-r from-primary/0 via-primary/20 to-primary/0 translate-x-[-100%] group-hover:translate-x-[100%] transition-transform duration-1000" />
                 <div className="relative flex items-center gap-2.5">
                   <div className="w-10 h-10 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center group-hover:scale-110 transition-transform">
@@ -63,7 +63,7 @@ export default function HeroSection() {
                   </div>
                   <span className="text-sm font-medium">Watch Demo</span>
                 </div>
-              </button>
+              </button> */}
             </motion.div>
 
             <motion.div variants={itemVariants} className="mt-7 flex items-center gap-6 justify-center md:justify-start text-sm text-muted-foreground">
@@ -81,12 +81,12 @@ export default function HeroSection() {
               <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
               <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-background via-background/80 to-transparent z-10" />
               <div className="flex gap-4 w-[200%] animate-slide">
-                {["/fantasy-book-cover-midnight.jpg","/adventure-book-cover-code.jpg","/romance-book-cover-garden.jpg","/mystery-book-cover-harbor.jpg","/book-cover-wellness.jpg"].map((src, i) => (
+                {["/cover1.jpg","/cover2.jpg","/cover3.jpg"].map((src, i) => (
                   <div key={`r1-${i}`} className="shrink-0 w-64 md:w-72 my-3 mr-4 rounded-[24px] overflow-hidden border-2 border-primary/30 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgba(236,162,18,0.25)] transition-shadow">
                     <Image src={src} alt="Book cover" width={600} height={800} className="w-full h-40 md:h-48 object-cover" />
                   </div>
                 ))}
-                {["/fantasy-book-cover-midnight.jpg","/adventure-book-cover-code.jpg","/romance-book-cover-garden.jpg","/mystery-book-cover-harbor.jpg","/book-cover-wellness.jpg"].map((src, i) => (
+                {["/cover6.jpg","/cover7.jpg","/cover8.jpg","/cover9.jpg"].map((src, i) => (
                   <div key={`r1b-${i}`} className="shrink-0 w-64 md:w-72 my-3 mr-4 rounded-[24px] overflow-hidden border-2 border-primary/30 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgba(236,162,18,0.25)] transition-shadow">
                     <Image src={src} alt="Book cover" width={600} height={800} className="w-full h-40 md:h-48 object-cover" />
                   </div>
@@ -99,12 +99,12 @@ export default function HeroSection() {
               <div className="pointer-events-none absolute left-0 top-0 h-full w-12 bg-gradient-to-r from-background via-background/80 to-transparent z-10" />
               <div className="pointer-events-none absolute right-0 top-0 h-full w-12 bg-gradient-to-l from-background via-background/80 to-transparent z-10" />
               <div className="flex gap-4 w-[200%] animate-slide-reverse">
-                {["/book-cover-design-modern.jpg","/book-cover-technology.jpg","/adventure-book-cover.png","/fantasy-book-cover-midnight.jpg","/romance-book-cover-garden.jpg"].map((src, i) => (
+                {["/cover4.jpg","/cover5.jpg","/cover12.jpg","/cover13.jpg","/cover14.jpg"].map((src, i) => (
                   <div key={`r2-${i}`} className="shrink-0 w-64 md:w-72 my-3 mr-4 rounded-[24px] overflow-hidden border-2 border-primary/30 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgba(236,162,18,0.25)] transition-shadow">
                     <Image src={src} alt="Book cover" width={600} height={800} className="w-full h-40 md:h-48 object-cover" />
                   </div>
                 ))}
-                {["/book-cover-design-modern.jpg","/book-cover-technology.jpg","/adventure-book-cover.png","/fantasy-book-cover-midnight.jpg","/romance-book-cover-garden.jpg"].map((src, i) => (
+                {["/cover10.jpg","/cover11.jpg","/cover1.jpg","/cover2.jpg"].map((src, i) => (
                   <div key={`r2b-${i}`} className="shrink-0 w-64 md:w-72 my-3 mr-4 rounded-[24px] overflow-hidden border-2 border-primary/30 bg-white shadow-[0_8px_30px_rgba(0,0,0,0.12)] hover:shadow-[0_8px_30px_rgba(236,162,18,0.25)] transition-shadow">
                     <Image src={src} alt="Book cover" width={600} height={800} className="w-full h-40 md:h-48 object-cover" />
                   </div>

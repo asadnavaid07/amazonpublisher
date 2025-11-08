@@ -71,7 +71,7 @@ export default function CTASection() {
       className="relative py-24 overflow-hidden bg-gradient-to-br from-primary/10 via-background to-background"
     >
       {/* Soft glowing background accent */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(59,130,246,0.1),transparent_60%)]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,primary,transparent_60%)]" />
 
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }}
