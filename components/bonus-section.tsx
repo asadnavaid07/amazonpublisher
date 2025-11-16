@@ -114,150 +114,308 @@
 
 
 
+// "use client"
+
+// import { ArrowRight } from "lucide-react"
+
+// const features = [
+//   {
+//     title: "Transparent Pricing & Milestone Reports",
+//     description:
+//       "Know exactly what you're paying for at every stage of the publishing process with clear milestones and real-time progress updates.",
+//     image: "/pricing.jpg"
+//   },
+//   {
+//     title: "Dedicated Author Portal",
+//     description:
+//       "Access your personal author dashboard to track progress, review drafts, and communicate directly with our publishing team.",
+//     image: "/dashboard.jpg"
+//   },
+//   {
+//     title: "Global Distribution Without Hidden Costs",
+//     description:
+//       "Your book reaches worldwide retailers—Amazon, Barnes & Noble, Apple Books, and more—without surprise fees or restrictions.",
+//     image: "/books3.jpg"
+//   },
+//   {
+//     title: "Post-Launch Support Built-In",
+//     description:
+//       "Our team stays with you after publication, helping you promote, market, and grow your author brand long after launch day.",
+//     image: "/team.jpg"
+//   },
+// ]
+
+// export default function BonusSection() {
+//   return (
+//     <section id="bonus" className="py-24 relative overflow-hidden">
+//       {/* Animated Background */}
+//       <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+//         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,162,18,0.1),transparent_50%)]" />
+//         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+        
+//         {/* Floating orbs */}
+//         <div className="absolute top-1/4 left-20 w-64 h-64 bg-[#ECA212]/10 rounded-full blur-3xl animate-pulse"></div>
+//         <div className="absolute bottom-1/4 right-20 w-80 h-80 bg-[#D89010]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+//         <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#ECA212]/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s' }}></div>
+//       </div>
+
+//       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+//         {/* Section Header */}
+//         <div className="mb-16 animate-fade-in">
+//           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+//             <span className="bg-gradient-to-r from-[#ECA212] to-[#D89010] bg-clip-text text-transparent">
+//               What Makes Us Different
+//             </span>
+//           </h2>
+//           <p className="text-slate-300 text-lg max-w-2xl mx-auto">
+//             Discover why authors choose us. Our process goes beyond publishing to partnership.
+//           </p>
+//         </div>
+
+//         {/* Feature Cards Grid */}
+//         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-20">
+//           {features.map((feature, index) => (
+//             <div
+//               key={feature.title}
+//               className="animate-slide-up"
+//               style={{ animationDelay: `${index * 150}ms` }}
+//             >
+//               <div className="overflow-hidden group rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-[#ECA212]/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#ECA212]/20">
+//                 <div className="relative h-56 overflow-hidden">
+//                   <img
+//                     src={feature.image}
+//                     alt={feature.title}
+//                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+//                   />
+//                   <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
+//                 </div>
+//                 <div className="p-6 text-left">
+//                   <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#ECA212] transition-colors duration-300">
+//                     {feature.title}
+//                   </h3>
+//                   <p className="text-slate-300 text-sm leading-relaxed">{feature.description}</p>
+//                 </div>
+//               </div>
+//             </div>
+//           ))}
+//         </div>
+
+//         {/* CTA Section */}
+//         <div className="text-center max-w-2xl mx-auto animate-scale-in" style={{ animationDelay: '600ms' }}>
+//           <h3 className="text-3xl sm:text-4xl font-bold text-white mb-6">
+//             See our packages or book your free consultation now.
+//           </h3>
+//           <button className="group bg-gradient-to-r from-[#ECA212] to-[#D89010] hover:from-[#D89010] hover:to-[#ECA212] text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-[#ECA212]/50 transition-all duration-300 hover:scale-105 inline-flex items-center">
+//             Schedule a Call
+//             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
+//           </button>
+//         </div>
+//       </div>
+
+//       <style jsx>{`
+//         @keyframes fade-in {
+//           from {
+//             opacity: 0;
+//             transform: translateY(20px);
+//           }
+//           to {
+//             opacity: 1;
+//             transform: translateY(0);
+//           }
+//         }
+
+//         @keyframes slide-up {
+//           from {
+//             opacity: 0;
+//             transform: translateY(30px);
+//           }
+//           to {
+//             opacity: 1;
+//             transform: translateY(0);
+//           }
+//         }
+
+//         @keyframes scale-in {
+//           from {
+//             opacity: 0;
+//             transform: scale(0.95);
+//           }
+//           to {
+//             opacity: 1;
+//             transform: scale(1);
+//           }
+//         }
+
+//         .animate-fade-in {
+//           animation: fade-in 0.8s ease-out;
+//         }
+
+//         .animate-slide-up {
+//           animation: slide-up 0.6s ease-out backwards;
+//         }
+
+//         .animate-scale-in {
+//           animation: scale-in 0.8s ease-out backwards;
+//         }
+//       `}</style>
+//     </section>
+//   )
+// }
+
+
+
 "use client"
 
 import { ArrowRight } from "lucide-react"
+import { motion } from "framer-motion"
 
 const features = [
   {
     title: "Transparent Pricing & Milestone Reports",
     description:
-      "Know exactly what you're paying for at every stage of the publishing process with clear milestones and real-time progress updates.",
-    image: "/pricing.jpg"
+      "Know exactly what you're paying for at every stage with clear milestones and real-time progress updates.",
+    image: "/pricing.jpg",
+    gradient: "from-amber-500 to-yellow-500",
   },
   {
     title: "Dedicated Author Portal",
     description:
-      "Access your personal author dashboard to track progress, review drafts, and communicate directly with our publishing team.",
-    image: "/dashboard.jpg"
+      "Access your personal dashboard to track progress, review drafts, and communicate directly with our team.",
+    image: "/dashboard.jpg",
+    gradient: "from-yellow-500 to-lime-500",
   },
   {
     title: "Global Distribution Without Hidden Costs",
     description:
-      "Your book reaches worldwide retailers—Amazon, Barnes & Noble, Apple Books, and more—without surprise fees or restrictions.",
-    image: "/books3.jpg"
+      "Your book reaches Amazon, Barnes & Noble, Apple Books, and more — no surprise fees.",
+    image: "/books3.jpg",
+    gradient: "from-orange-500 to-amber-500",
   },
   {
     title: "Post-Launch Support Built-In",
     description:
-      "Our team stays with you after publication, helping you promote, market, and grow your author brand long after launch day.",
-    image: "/team.jpg"
+      "We stay with you after launch to promote, market, and grow your author brand.",
+    image: "/team.jpg",
+    gradient: "from-amber-600 to-orange-600",
   },
 ]
 
 export default function BonusSection() {
   return (
-    <section id="bonus" className="py-24 relative overflow-hidden">
-      {/* Animated Background */}
-      <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,162,18,0.1),transparent_50%)]" />
-        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
+    <section id="bonus" className="py-24 relative overflow-hidden bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50">
+      {/* ==== EYE-CATCHING BACKGROUND ==== */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(251,191,36,0.25),transparent_60%)]" />
+        <div className="absolute inset-0 opacity-5 bg-[linear-gradient(45deg,#fbbf24_25%,transparent_25%),linear-gradient(-45deg,#fbbf24_25%,transparent_25%)] bg-[length:40px_40px]" />
         
-        {/* Floating orbs */}
-        <div className="absolute top-1/4 left-20 w-64 h-64 bg-[#ECA212]/10 rounded-full blur-3xl animate-pulse"></div>
-        <div className="absolute bottom-1/4 right-20 w-80 h-80 bg-[#D89010]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '1.5s' }}></div>
-        <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 h-96 bg-[#ECA212]/5 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '3s' }}></div>
+        {/* Golden Orbs with Pulse */}
+        <motion.div
+          animate={{ scale: [1, 1.2, 1] }}
+          transition={{ duration: 3, repeat: Infinity }}
+          className="absolute top-1/4 left-20 w-72 h-72 bg-gradient-to-br from-amber-400/60 to-yellow-400/50 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{ scale: [1.1, 1.3, 1.1] }}
+          transition={{ duration: 4, repeat: Infinity, delay: 1 }}
+          className="absolute bottom-1/4 right-20 w-80 h-80 bg-gradient-to-br from-orange-400/60 to-amber-400/50 rounded-full blur-3xl"
+        />
       </div>
 
       <div className="relative z-10 max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-        {/* Section Header */}
-        <div className="mb-16 animate-fade-in">
-          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-            <span className="bg-gradient-to-r from-[#ECA212] to-[#D89010] bg-clip-text text-transparent">
+        {/* ==== BOLD HEADER ==== */}
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.8 }}
+          className="mb-16"
+        >
+          <h2 className="text-5xl sm:text-6xl font-extrabold mb-4">
+            <span className="bg-gradient-to-r from-amber-600 via-yellow-500 to-orange-600 bg-clip-text text-transparent drop-shadow-lg">
               What Makes Us Different
             </span>
           </h2>
-          <p className="text-slate-300 text-lg max-w-2xl mx-auto">
-            Discover why authors choose us. Our process goes beyond publishing to partnership.
+          <p className="text-lg text-amber-800 max-w-2xl mx-auto font-bold">
+            We don’t just publish — we <span className="text-orange-600">partner for your success</span>.
           </p>
-        </div>
+        </motion.div>
 
-        {/* Feature Cards Grid */}
+        {/* ==== VIBRANT FEATURE CARDS ==== */}
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-8 mb-20">
           {features.map((feature, index) => (
-            <div
+            <motion.div
               key={feature.title}
-              className="animate-slide-up"
-              style={{ animationDelay: `${index * 150}ms` }}
+              initial={{ opacity: 0, y: 50 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.7, delay: index * 0.15 }}
+              whileHover={{ y: -12, scale: 1.04 }}
+              className="group"
             >
-              <div className="overflow-hidden group rounded-xl bg-white/5 backdrop-blur-sm border border-white/10 hover:bg-white/10 hover:border-[#ECA212]/30 transition-all duration-300 hover:scale-105 hover:shadow-2xl hover:shadow-[#ECA212]/20">
-                <div className="relative h-56 overflow-hidden">
-                  <img
-                    src={feature.image}
-                    alt={feature.title}
-                    className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/40 to-transparent opacity-60 group-hover:opacity-40 transition-opacity duration-300"></div>
-                </div>
-                <div className="p-6 text-left">
-                  <h3 className="text-xl font-semibold text-white mb-2 group-hover:text-[#ECA212] transition-colors duration-300">
+              <div className={`relative h-full overflow-hidden rounded-3xl bg-gradient-to-br ${feature.gradient} p-1 shadow-xl`}>
+                {/* Inner Glass Card */}
+                <div className="h-full rounded-[22px] bg-gradient-to-br from-white/20 to-white/10 backdrop-blur-xl p-6 border border-white/30">
+                  {/* Image */}
+                  <div className="relative h-56 mb-4 overflow-hidden rounded-2xl shadow-inner">
+                    <img
+                      src={feature.image}
+                      alt={feature.title}
+                      className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                    />
+                    {/* NO WHITE OVERLAY — FULL COLOR */}
+                  </div>
+
+                  {/* Text */}
+                  <h3 className="text-xl font-bold text-white drop-shadow-md mb-2">
                     {feature.title}
                   </h3>
-                  <p className="text-slate-300 text-sm leading-relaxed">{feature.description}</p>
+                  <p className="text-white/90 text-sm leading-relaxed font-medium drop-shadow">
+                    {feature.description}
+                  </p>
                 </div>
+
+                {/* Glowing Hover Border */}
+                <motion.div
+                  className="absolute inset-0 rounded-3xl bg-gradient-to-br from-amber-400/50 to-orange-400/50 blur-xl opacity-0 group-hover:opacity-100 -z-10"
+                  initial={{ scale: 0.8 }}
+                  whileHover={{ scale: 1.1 }}
+                  transition={{ duration: 0.4 }}
+                />
               </div>
-            </div>
+            </motion.div>
           ))}
         </div>
 
-        {/* CTA Section */}
-        <div className="text-center max-w-2xl mx-auto animate-scale-in" style={{ animationDelay: '600ms' }}>
-          <h3 className="text-3xl sm:text-4xl font-bold text-white mb-6">
-            See our packages or book your free consultation now.
+        {/* ==== EPIC CTA ==== */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+          className="text-center max-w-2xl mx-auto"
+        >
+          <h3 className="text-3xl sm:text-4xl font-extrabold text-gray-800 mb-6 drop-shadow">
+            Ready to Publish Like a Pro?
           </h3>
-          <button className="group bg-gradient-to-r from-[#ECA212] to-[#D89010] hover:from-[#D89010] hover:to-[#ECA212] text-white px-8 py-4 text-lg font-semibold rounded-full shadow-lg hover:shadow-[#ECA212]/50 transition-all duration-300 hover:scale-105 inline-flex items-center">
-            Schedule a Call
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </button>
-        </div>
+          <motion.button
+            whileHover={{ scale: 1.08 }}
+            whileTap={{ scale: 0.95 }}
+            className="group relative inline-flex items-center gap-3 bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-10 py-5 text-xl font-bold rounded-full shadow-2xl hover:shadow-amber-500/60 transition-all duration-300 overflow-hidden"
+          >
+            <span className="relative z-10">Schedule a Call</span>
+            <motion.div
+              animate={{ x: [0, 6, 0] }}
+              transition={{ duration: 1.2, repeat: Infinity }}
+              className="relative z-10"
+            >
+              <ArrowRight className="w-6 h-6" />
+            </motion.div>
+            {/* Pulse Ring */}
+            <motion.div
+              className="absolute inset-0 bg-white/30 rounded-full"
+              animate={{ scale: [1, 1.5], opacity: [0.6, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity }}
+            />
+          </motion.button>
+        </motion.div>
       </div>
-
-      <style jsx>{`
-        @keyframes fade-in {
-          from {
-            opacity: 0;
-            transform: translateY(20px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes slide-up {
-          from {
-            opacity: 0;
-            transform: translateY(30px);
-          }
-          to {
-            opacity: 1;
-            transform: translateY(0);
-          }
-        }
-
-        @keyframes scale-in {
-          from {
-            opacity: 0;
-            transform: scale(0.95);
-          }
-          to {
-            opacity: 1;
-            transform: scale(1);
-          }
-        }
-
-        .animate-fade-in {
-          animation: fade-in 0.8s ease-out;
-        }
-
-        .animate-slide-up {
-          animation: slide-up 0.6s ease-out backwards;
-        }
-
-        .animate-scale-in {
-          animation: scale-in 0.8s ease-out backwards;
-        }
-      `}</style>
     </section>
   )
 }

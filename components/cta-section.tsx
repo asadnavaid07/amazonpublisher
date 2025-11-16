@@ -1,3 +1,4 @@
+
 // "use client"
 
 // import { Button } from "@/components/ui/button"
@@ -6,57 +7,74 @@
 
 // export default function CTASection() {
 //   return (
-//     <section id="contact" className="py-20 bg-background">
+//     <section
+//       id="contact"
+//       className="relative py-24 overflow-hidden bg-gradient-to-br from-primary/10 via-background to-background"
+//     >
+//       {/* Soft glowing background accent */}
+//       <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,primary,transparent_60%)]" />
+
 //       <motion.div
-//         initial={{ opacity: 0, scale: 0.98 }}
+//         initial={{ opacity: 0, scale: 0.96 }}
 //         whileInView={{ opacity: 1, scale: 1 }}
 //         viewport={{ once: true, amount: 0.3 }}
 //         transition={{ duration: 0.6 }}
-//         className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
+//         className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
 //       >
+//         {/* Headline */}
 //         <motion.h2
 //           initial={{ opacity: 0, y: 14 }}
 //           whileInView={{ opacity: 1, y: 0 }}
 //           viewport={{ once: true }}
 //           transition={{ duration: 0.5, delay: 0.1 }}
-//           className="text-4xl sm:text-5xl font-bold text-foreground mb-6 text-balance"
+//           className="text-4xl sm:text-5xl font-bold text-foreground mb-6 leading-tight text-balance"
 //         >
-//           Ready to Publish Your Book?
+//           Want your story featured here?{" "}
+//           <span className="text-primary">Let’s make it happen.</span>
 //         </motion.h2>
+
+//         {/* Subtext */}
 //         <motion.p
 //           initial={{ opacity: 0, y: 10 }}
 //           whileInView={{ opacity: 1, y: 0 }}
 //           viewport={{ once: true }}
 //           transition={{ duration: 0.5, delay: 0.2 }}
-//           className="text-lg text-muted-foreground mb-8 max-w-2xl mx-auto text-balance"
+//           className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto text-balance"
 //         >
-//           Join hundreds of successful authors who have transformed their manuscripts into published books with Elite
-//           Publishing. Your story is waiting to be shared with the world.
+//           From first draft to global publication — we turn your ideas into beautifully published
+//           books that captivate readers everywhere.
 //         </motion.p>
 
+//         {/* CTA Button */}
 //         <motion.div
 //           initial={{ opacity: 0, y: 8 }}
 //           whileInView={{ opacity: 1, y: 0 }}
 //           viewport={{ once: true }}
 //           transition={{ duration: 0.5, delay: 0.3 }}
-//           className="flex flex-col sm:flex-row gap-4 justify-center items-center"
+//           className="flex justify-center"
 //         >
-//           <Button size="lg" className="bg-primary hover:bg-primary/90 text-primary-foreground group">
-//             Get Started Today
-//             <ArrowRight className="ml-2 w-4 h-4 group-hover:translate-x-1 transition-transform" />
-//           </Button>
 //           <Button
 //             size="lg"
-//             variant="outline"
-//             className="border-primary/30 text-foreground hover:bg-primary/10 bg-transparent"
+//             className="group bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-primary/30 transition-all duration-300"
 //           >
-//             Schedule a Consultation
+//             Start My Project
+//             <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
 //           </Button>
 //         </motion.div>
+
+//         {/* Decorative line below button */}
+//         <motion.div
+//           initial={{ opacity: 0, width: 0 }}
+//           whileInView={{ opacity: 1, width: "80px" }}
+//           viewport={{ once: true }}
+//           transition={{ duration: 0.6, delay: 0.4 }}
+//           className="mx-auto mt-10 h-1 bg-primary rounded-full"
+//         />
 //       </motion.div>
 //     </section>
 //   )
 // }
+
 
 "use client"
 
@@ -68,66 +86,102 @@ export default function CTASection() {
   return (
     <section
       id="contact"
-      className="relative py-24 overflow-hidden bg-gradient-to-br from-primary/10 via-background to-background"
+      className="relative py-28 overflow-hidden bg-gradient-to-br from-amber-50 via-yellow-50 to-orange-50"
     >
-      {/* Soft glowing background accent */}
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,primary,transparent_60%)]" />
+      {/* ==== GLOWING GOLDEN BACKGROUND ==== */}
+      <div className="absolute inset-0 -z-10">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(251,191,36,0.2),transparent_60%)]" />
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,rgba(251,146,60,0.15),transparent_60%)]" />
+        
+        {/* Floating Orbs */}
+        <motion.div
+          animate={{ y: [0, -20, 0], scale: [1, 1.1, 1] }}
+          transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+          className="absolute top-20 left-10 w-80 h-80 bg-gradient-to-br from-amber-300/30 to-yellow-300/20 rounded-full blur-3xl"
+        />
+        <motion.div
+          animate={{ y: [0, 20, 0], scale: [1.1, 1, 1.1] }}
+          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+          className="absolute bottom-20 right-10 w-72 h-72 bg-gradient-to-br from-orange-300/30 to-amber-300/20 rounded-full blur-3xl"
+        />
+      </div>
 
       <motion.div
         initial={{ opacity: 0, scale: 0.96 }}
         whileInView={{ opacity: 1, scale: 1 }}
         viewport={{ once: true, amount: 0.3 }}
-        transition={{ duration: 0.6 }}
+        transition={{ duration: 0.8, ease: "easeOut" }}
         className="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center"
       >
-        {/* Headline */}
+        {/* ==== HEADLINE ==== */}
         <motion.h2
-          initial={{ opacity: 0, y: 14 }}
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="text-4xl sm:text-5xl font-bold text-foreground mb-6 leading-tight text-balance"
+          transition={{ duration: 0.7, delay: 0.1 }}
+          className="text-5xl sm:text-6xl font-extrabold mb-6 leading-tight"
         >
-          Want your story featured here?{" "}
-          <span className="text-primary">Let’s make it happen.</span>
+          <span className="bg-gradient-to-r from-amber-600 via-yellow-500 to-orange-500 bg-clip-text text-transparent drop-shadow-md">
+            Want your story featured here?
+          </span>
+          <br />
+          <span className="text-gray-800">Let’s make it happen.</span>
         </motion.h2>
 
-        {/* Subtext */}
+        {/* ==== SUBTEXT ==== */}
         <motion.p
+          initial={{ opacity: 0, y: 15 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.7, delay: 0.2 }}
+          className="text-lg text-gray-700 mb-12 max-w-2xl mx-auto font-medium leading-relaxed"
+        >
+          From first draft to global publication — we turn your ideas into{" "}
+          <span className="font-bold text-amber-600">beautifully published books</span> that captivate readers everywhere.
+        </motion.p>
+
+        {/* ==== CTA BUTTON ==== */}
+        <motion.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-lg text-muted-foreground mb-10 max-w-2xl mx-auto text-balance"
-        >
-          From first draft to global publication — we turn your ideas into beautifully published
-          books that captivate readers everywhere.
-        </motion.p>
-
-        {/* CTA Button */}
-        <motion.div
-          initial={{ opacity: 0, y: 8 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          transition={{ duration: 0.7, delay: 0.3 }}
           className="flex justify-center"
         >
-          <Button
-            size="lg"
-            className="group bg-primary text-primary-foreground hover:bg-primary/90 px-8 py-6 text-lg font-semibold rounded-full shadow-lg hover:shadow-primary/30 transition-all duration-300"
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.98 }}
+            className="relative group"
           >
-            Start My Project
-            <ArrowRight className="ml-2 w-5 h-5 group-hover:translate-x-1 transition-transform" />
-          </Button>
+            <Button
+              size="lg"
+              className="bg-gradient-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white px-10 py-7 text-xl font-bold rounded-full shadow-xl hover:shadow-amber-500/50 transition-all duration-300 flex items-center gap-3"
+            >
+              Start My Project
+              <motion.div
+                animate={{ x: [0, 4, 0] }}
+                transition={{ duration: 1.5, repeat: Infinity }}
+              >
+                <ArrowRight className="w-6 h-6" />
+              </motion.div>
+            </Button>
+
+            {/* Pulse Ring */}
+            <motion.div
+              className="absolute inset-0 rounded-full bg-amber-400/40 blur-xl"
+              animate={{ scale: [1, 1.4], opacity: [0.6, 0] }}
+              transition={{ duration: 2, repeat: Infinity }}
+            />
+          </motion.div>
         </motion.div>
 
-        {/* Decorative line below button */}
+        {/* ==== DECORATIVE LINE ==== */}
         <motion.div
-          initial={{ opacity: 0, width: 0 }}
-          whileInView={{ opacity: 1, width: "80px" }}
+          initial={{ width: 0 }}
+          whileInView={{ width: "100px" }}
           viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="mx-auto mt-10 h-1 bg-primary rounded-full"
+          transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+          className="mx-auto mt-12 h-1.5 bg-gradient-to-r from-amber-400 to-orange-400 rounded-full shadow-lg shadow-amber-400/50"
         />
       </motion.div>
     </section>
