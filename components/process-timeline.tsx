@@ -1,46 +1,58 @@
+
+
 // "use client"
 
 // import { useState } from "react"
-// import { motion } from "framer-motion"
-// import { Card } from "@/components/ui/card"
 // import { CheckCircle2 } from "lucide-react"
 
 // const steps = [
 //   {
 //     number: 1,
-//     title: "Manuscript Submission",
-//     description: "Submit your completed manuscript for initial review and assessment by our editorial team.",
-//     details: "We evaluate your work for market potential, genre fit, and publishing readiness.",
+//     title: "Discovery & Planning",
+//     description:
+//       "We begin with a one-on-one consultation: your goals, genre, target reader, schedule and budget.",
+//     details:
+//       "Together we map the best service path and agree on milestones for your publishing journey.",
 //   },
 //   {
 //     number: 2,
-//     title: "Editorial Review",
-//     description: "Receive comprehensive feedback and work with our editors on developmental edits.",
-//     details: "Our team provides detailed notes on structure, pacing, character development, and overall narrative.",
+//     title: "Pre-Production / Outline",
+//     description:
+//       "For ghostwriting: outline development, research, chapter breakdown. For editing or other services, we perform a manuscript assessment.",
+//     details:
+//       "We also develop a style guide and plan for design, marketing, and other essential steps before production begins.",
 //   },
 //   {
 //     number: 3,
-//     title: "Professional Editing",
-//     description: "Undergo line editing and copy editing to perfect grammar, style, and consistency.",
-//     details: "We ensure your manuscript meets professional publishing standards with meticulous attention to detail.",
+//     title: "Creation & Execution",
+//     description:
+//       "Manuscript writing, editing rounds, design mock-ups, and formatting—completed under your guidance and approval.",
+//     details:
+//       "We handle the heavy lifting while you review progress, provide feedback, and maintain full creative control.",
 //   },
 //   {
 //     number: 4,
-//     title: "Design & Layout",
-//     description: "Create stunning cover design and professional interior layout for your book.",
-//     details: "Our designers craft a visually compelling cover and format your interior for print and digital.",
+//     title: "Quality-Assurance & Finalisation",
+//     description:
+//       "We proofread, review, and ensure full technical compliance for both print and eBook formats.",
+//     details:
+//       "For audiobooks, we handle narration, mastering, and final QA to deliver professional-quality results.",
 //   },
 //   {
 //     number: 5,
-//     title: "Final Review",
-//     description: "Approve proofs and make final adjustments before moving to production.",
-//     details: "You have the opportunity to review everything and request any final changes.",
+//     title: "Publishing & Launch",
+//     description:
+//       "We publish your book across retail channels, distribute to libraries, and manage pricing and metadata.",
+//     details:
+//       "We also assist in scheduling launch events and promotional campaigns for maximum visibility.",
 //   },
 //   {
 //     number: 6,
-//     title: "Publication & Distribution",
-//     description: "Your book goes live and is distributed to retailers worldwide.",
-//     details: "We handle all distribution logistics and ensure your book reaches major online and physical retailers.",
+//     title: "Marketing & Growth",
+//     description:
+//       "Post-launch, we continue to support your book with marketing strategies and performance reviews.",
+//     details:
+//       "We help you run ad campaigns, optimise listings, engage readers, and grow your author brand long-term.",
 //   },
 // ]
 
@@ -48,71 +60,85 @@
 //   const [expandedStep, setExpandedStep] = useState<number | null>(null)
 
 //   return (
-//     <section id="process" className="py-20 bg-background">
-//       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+//     <section id="process" className="py-20 relative overflow-hidden">
+//       {/* Animated Background - Light with visible golden tint */}
+//       <div className="absolute inset-0 z-0 bg-gradient-to-br from-amber-50 via-yellow-50/50 to-orange-50/30">
+//         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,162,18,0.08),transparent_50%)]" />
+//         <div className="absolute inset-0 bg-[linear-gradient(to_right,#ECA21220_1px,transparent_1px),linear-gradient(to_bottom,#ECA21220_1px,transparent_1px)] bg-[size:24px_24px]" />
+        
+//         {/* Floating orbs - more visible */}
+//         <div className="absolute top-20 left-10 w-96 h-96 bg-[#ECA212]/10 rounded-full blur-3xl animate-pulse"></div>
+//         <div className="absolute bottom-20 right-10 w-80 h-80 bg-[#D89010]/10 rounded-full blur-3xl animate-pulse" style={{ animationDelay: '2s' }}></div>
+//       </div>
+
+//       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
 //         {/* Section Header */}
-//         <motion.div
-//           initial={{ opacity: 0, y: 20 }}
-//           whileInView={{ opacity: 1, y: 0 }}
-//           viewport={{ once: true, amount: 0.3 }}
-//           transition={{ duration: 0.6 }}
-//           className="text-center mb-16"
-//         >
-//           <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 text-balance">Your Publishing Journey</h2>
-//           <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
-//             From manuscript to published book, we guide you through every step of the process with expertise and care.
+//         <div className="text-center mb-16 animate-fade-in">
+//           <h2 className="text-4xl sm:text-5xl font-bold text-gray-900 mb-4">
+//             Our Proven Process — Simple, Transparent, Effective
+//           </h2>
+//           <p className="text-lg text-gray-600 max-w-2xl mx-auto">
+//             Every great book follows a great process. Here's how we guide you from your first idea to
+//             a published, market-ready masterpiece.
 //           </p>
-//         </motion.div>
+//         </div>
 
 //         {/* Timeline */}
 //         <div className="relative">
 //           {/* Vertical Line */}
-//           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary to-primary/30 hidden sm:block" />
+//           <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-[#ECA212] via-[#ECA212] to-[#ECA212]/30 hidden sm:block" />
 
 //           {/* Timeline Steps */}
 //           <div className="space-y-8">
 //             {steps.map((step, index) => (
-//               <motion.div
+//               <div
 //                 key={step.number}
-//                 initial={{ opacity: 0, x: index % 2 === 0 ? -16 : 16 }}
-//                 whileInView={{ opacity: 1, x: 0 }}
-//                 viewport={{ once: true, amount: 0.3 }}
-//                 transition={{ duration: 0.5, delay: index * 0.06 }}
-//                 className="relative"
+//                 className="relative animate-slide-up"
+//                 style={{ animationDelay: `${index * 100}ms` }}
 //               >
 //                 {/* Timeline Dot */}
 //                 <div className="absolute left-0 top-2 sm:left-0 sm:top-6">
 //                   <div className="relative">
-//                     <div className="w-16 h-16 sm:w-16 sm:h-16 bg-background border-4 border-primary rounded-full flex items-center justify-center shadow-lg">
-//                       <CheckCircle2 className="w-8 h-8 text-primary" />
+//                     <div className="w-16 h-16 sm:w-16 sm:h-16 bg-white border-4 border-[#ECA212] rounded-full flex items-center justify-center shadow-lg">
+//                       <CheckCircle2 className="w-8 h-8 text-[#ECA212]" />
 //                     </div>
 //                   </div>
 //                 </div>
 
 //                 {/* Content */}
 //                 <div className="ml-24 sm:ml-32">
-//                   <Card
-//                     onClick={() => setExpandedStep(expandedStep === step.number ? null : step.number)}
-//                     className="bg-card border-border hover:border-primary/50 transition-all duration-300 cursor-pointer p-6 group"
+//                   <div
+//                     onClick={() =>
+//                       setExpandedStep(expandedStep === step.number ? null : step.number)
+//                     }
+//                     className="bg-white/90 backdrop-blur-sm border border-gray-200 hover:border-[#ECA212]/50 transition-all duration-300 cursor-pointer p-6 group rounded-xl shadow-sm hover:shadow-xl hover:shadow-[#ECA212]/10 hover:scale-[1.02]"
 //                   >
 //                     <div className="flex items-start justify-between">
 //                       <div className="flex-1">
 //                         <div className="flex items-center gap-3 mb-2">
-//                           <span className="text-sm font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
+//                           <span className="text-sm font-semibold text-[#ECA212] bg-[#ECA212]/10 px-3 py-1 rounded-full">
 //                             Step {step.number}
 //                           </span>
 //                         </div>
-//                         <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
+//                         <h3 className="text-xl sm:text-2xl font-bold text-gray-900 mb-2 group-hover:text-[#ECA212] transition-colors">
 //                           {step.title}
 //                         </h3>
-//                         <p className="text-muted-foreground">{step.description}</p>
+//                         <p className="text-gray-600">{step.description}</p>
 
 //                         {/* Expanded Details */}
-//                         {expandedStep === step.number && (
-//                           <div className="mt-4 pt-4 border-t border-border">
-//                             <p className="text-sm text-muted-foreground leading-relaxed">{step.details}</p>
+//                         <div 
+//                           className="overflow-hidden transition-all duration-300"
+//                           style={{
+//                             maxHeight: expandedStep === step.number ? '200px' : '0',
+//                             opacity: expandedStep === step.number ? 1 : 0
+//                           }}
+//                         >
+//                           <div className="mt-4 pt-4 border-t border-gray-200">
+//                             <p className="text-sm text-gray-600 leading-relaxed">
+//                               {step.details}
+//                             </p>
 //                           </div>
-//                         )}
+//                         </div>
 //                       </div>
 
 //                       {/* Expand Icon */}
@@ -123,7 +149,7 @@
 //                           }`}
 //                         >
 //                           <svg
-//                             className="w-5 h-5 text-muted-foreground"
+//                             className="w-5 h-5 text-gray-400 group-hover:text-[#ECA212] transition-colors"
 //                             fill="none"
 //                             stroke="currentColor"
 //                             viewBox="0 0 24 24"
@@ -138,36 +164,80 @@
 //                         </div>
 //                       </div>
 //                     </div>
-//                   </Card>
+//                   </div>
 //                 </div>
-//               </motion.div>
+//               </div>
 //             ))}
 //           </div>
 
 //           {/* Final Checkmark */}
-//           <motion.div
-//             initial={{ opacity: 0, y: 16 }}
-//             whileInView={{ opacity: 1, y: 0 }}
-//             viewport={{ once: true, amount: 0.3 }}
-//             transition={{ duration: 0.5 }}
-//             className="relative mt-8"
-//           >
+//           <div className="relative mt-8 animate-scale-in" style={{ animationDelay: '600ms' }}>
 //             <div className="absolute left-0 top-2 sm:left-0 sm:top-6">
-//               <div className="w-16 h-16 sm:w-16 sm:h-16 bg-primary border-4 border-primary rounded-full flex items-center justify-center shadow-lg">
-//                 <CheckCircle2 className="w-8 h-8 text-primary-foreground" />
+//               <div className="w-16 h-16 sm:w-16 sm:h-16 bg-gradient-to-br from-[#ECA212] to-[#D89010] border-4 border-[#ECA212] rounded-full flex items-center justify-center shadow-lg">
+//                 <CheckCircle2 className="w-8 h-8 text-white" />
 //               </div>
 //             </div>
 //             <div className="ml-24 sm:ml-32">
-//               <Card className="bg-primary/10 border-primary/30 p-6">
-//                 <h3 className="text-xl font-bold text-primary">Your Book is Published!</h3>
-//                 <p className="text-primary/80 mt-2">
-//                   Celebrate your achievement and start your author journey with Amazon Publisher.
+//               <div className="bg-gradient-to-br from-[#ECA212]/10 to-[#D89010]/10 border border-[#ECA212]/30 p-6 rounded-xl backdrop-blur-sm">
+//                 <h3 className="text-xl font-bold text-[#ECA212]">
+//                   Your Publishing Success Starts Here
+//                 </h3>
+//                 <p className="text-gray-700 mt-2">
+//                   With a clear, proven process, we make your author journey simple, stress-free, and
+//                   successful.
 //                 </p>
-//               </Card>
+//               </div>
 //             </div>
-//           </motion.div>
+//           </div>
 //         </div>
 //       </div>
+
+//       <style jsx>{`
+//         @keyframes fade-in {
+//           from {
+//             opacity: 0;
+//             transform: translateY(20px);
+//           }
+//           to {
+//             opacity: 1;
+//             transform: translateY(0);
+//           }
+//         }
+
+//         @keyframes slide-up {
+//           from {
+//             opacity: 0;
+//             transform: translateY(30px);
+//           }
+//           to {
+//             opacity: 1;
+//             transform: translateY(0);
+//           }
+//         }
+
+//         @keyframes scale-in {
+//           from {
+//             opacity: 0;
+//             transform: scale(0.95);
+//           }
+//           to {
+//             opacity: 1;
+//             transform: scale(1);
+//           }
+//         }
+
+//         .animate-fade-in {
+//           animation: fade-in 0.8s ease-out;
+//         }
+
+//         .animate-slide-up {
+//           animation: slide-up 0.6s ease-out backwards;
+//         }
+
+//         .animate-scale-in {
+//           animation: scale-in 0.8s ease-out backwards;
+//         }
+//       `}</style>
 //     </section>
 //   )
 // }
@@ -176,58 +246,75 @@
 "use client"
 
 import { useState } from "react"
+import { CheckCircle2, ChevronDown } from "lucide-react"
 import { motion } from "framer-motion"
-import { Card } from "@/components/ui/card"
-import { CheckCircle2 } from "lucide-react"
 
 const steps = [
   {
     number: 1,
     title: "Discovery & Planning",
-    description:
-      "We begin with a one-on-one consultation: your goals, genre, target reader, schedule and budget.",
-    details:
-      "Together we map the best service path and agree on milestones for your publishing journey.",
+    description: "We begin with a one-on-one consultation: your goals, genre, target reader, schedule and budget.",
+    details: "Together we map the best service path and agree on milestones for your publishing journey.",
+    gradient: "from-yellow-400 to-orange-400",
+    glow: "shadow-yellow-400/60",
+    icon: "text-yellow-900",
+    text: "text-white",
+    bgOpacity: "bg-white/10",
   },
   {
     number: 2,
     title: "Pre-Production / Outline",
-    description:
-      "For ghostwriting: outline development, research, chapter breakdown. For editing or other services, we perform a manuscript assessment.",
-    details:
-      "We also develop a style guide and plan for design, marketing, and other essential steps before production begins.",
+    description: "For ghostwriting: outline development, research, chapter breakdown. For editing or other services, we perform a manuscript assessment.",
+    details: "We also develop a style guide and plan for design, marketing, and other essential steps before production begins.",
+    gradient: "from-pink-400 to-rose-400",
+    glow: "shadow-pink-400/60",
+    icon: "text-pink-900",
+    text: "text-white",
+    bgOpacity: "bg-white/10",
   },
   {
     number: 3,
     title: "Creation & Execution",
-    description:
-      "Manuscript writing, editing rounds, design mock-ups, and formatting—completed under your guidance and approval.",
-    details:
-      "We handle the heavy lifting while you review progress, provide feedback, and maintain full creative control.",
+    description: "Manuscript writing, editing rounds, design mock-ups, and formatting—completed under your guidance and approval.",
+    details: "We handle the heavy lifting while you review progress, provide feedback, and maintain full creative control.",
+    gradient: "from-purple-400 to-indigo-400",
+    glow: "shadow-purple-400/60",
+    icon: "text-purple-900",
+    text: "text-white",
+    bgOpacity: "bg-white/10",
   },
   {
     number: 4,
     title: "Quality-Assurance & Finalisation",
-    description:
-      "We proofread, review, and ensure full technical compliance for both print and eBook formats.",
-    details:
-      "For audiobooks, we handle narration, mastering, and final QA to deliver professional-quality results.",
+    description: "We proofread, review, and ensure full technical compliance for both print and eBook formats.",
+    details: "For audiobooks, we handle narration, mastering, and final QA to deliver professional-quality results.",
+    gradient: "from-teal-400 to-cyan-400",
+    glow: "shadow-teal-400/60",
+    icon: "text-teal-900",
+    text: "text-white",
+    bgOpacity: "bg-white/10",
   },
   {
     number: 5,
     title: "Publishing & Launch",
-    description:
-      "We publish your book across retail channels, distribute to libraries, and manage pricing and metadata.",
-    details:
-      "We also assist in scheduling launch events and promotional campaigns for maximum visibility.",
+    description: "We publish your book across retail channels, distribute to libraries, and manage pricing and metadata.",
+    details: "We also assist in scheduling launch events and promotional campaigns for maximum visibility.",
+    gradient: "from-orange-400 to-red-400",
+    glow: "shadow-orange-400/60",
+    icon: "text-orange-900",
+    text: "text-white",
+    bgOpacity: "bg-white/10",
   },
   {
     number: 6,
     title: "Marketing & Growth",
-    description:
-      "Post-launch, we continue to support your book with marketing strategies and performance reviews.",
-    details:
-      "We help you run ad campaigns, optimise listings, engage readers, and grow your author brand long-term.",
+    description: "Post-launch, we continue to support your book with marketing strategies and performance reviews.",
+    details: "We help you run ad campaigns, optimise listings, engage readers, and grow your author brand long-term.",
+    gradient: "from-emerald-400 to-lime-400",
+    glow: "shadow-emerald-400/60",
+    icon: "text-emerald-900",
+    text: "text-white",
+    bgOpacity: "bg-white/10",
   },
 ]
 
@@ -235,135 +322,130 @@ export default function ProcessTimeline() {
   const [expandedStep, setExpandedStep] = useState<number | null>(null)
 
   return (
-    <section id="process" className="py-20 bg-background">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Section Header */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
-          className="text-center mb-16"
-        >
-          <h2 className="text-4xl sm:text-5xl font-bold text-foreground mb-4 text-balance">
-            Our Proven Process — Simple, Transparent, Effective
+    <section id="process" className="py-24 relative overflow-hidden">
+      {/* ==== VIBRANT BACKGROUND ==== */}
+      <div className="absolute inset-0 -z-10 bg-gradient-to-br from-yellow-50 via-pink-50 to-purple-50">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_20%_80%,rgba(250,204,21,0.2),transparent_60%),radial-gradient(circle_at_80%_20%,rgba(236,72,153,0.2),transparent_60%)]" />
+        <div className="absolute inset-0 opacity-5 bg-[linear-gradient(45deg,#fff_25%,transparent_25%),linear-gradient(-45deg,#fff_25%,transparent_25%)] bg-[length:30px_30px]" />
+        
+        {/* Floating Orbs */}
+        <div className="absolute top-10 left-10 w-80 h-80 bg-gradient-to-br from-yellow-300 to-orange-300 rounded-full blur-3xl opacity-40 animate-pulse"></div>
+        <div className="absolute bottom-20 right-10 w-72 h-72 bg-gradient-to-br from-pink-300 to-purple-300 rounded-full blur-3xl opacity-40 animate-pulse" style={{ animationDelay: '1.5s' }}></div>
+      </div>
+
+      <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* ==== HEADER ==== */}
+        <div className="text-center mb-20">
+          <h2 className="text-5xl sm:text-6xl font-extrabold bg-gradient-to-r from-yellow-600 via-pink-500 to-purple-600 bg-clip-text text-transparent">
+            Our Proven Process
           </h2>
-          <p className="text-lg text-muted-foreground max-w-2xl mx-auto text-balance">
-            Every great book follows a great process. Here’s how we guide you from your first idea to
-            a published, market-ready masterpiece.
+          <p className="mt-4 text-lg text-gray-700 max-w-3xl mx-auto font-medium">
+            From idea to bestseller — <span className="text-transparent bg-clip-text bg-gradient-to-r from-orange-500 to-pink-500">simple, colorful, effective</span>.
           </p>
-        </motion.div>
+        </div>
 
-        {/* Timeline */}
-        <div className="relative">
-          {/* Vertical Line */}
-          <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-gradient-to-b from-primary via-primary to-primary/30 hidden sm:block" />
+        {/* ==== TIMELINE ==== */}
+        <div className="space-y-10">
+          {steps.map((step, index) => (
+            <motion.div
+              key={step.number}
+              initial={{ opacity: 0, x: -60 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              transition={{ duration: 0.6, delay: index * 0.12 }}
+              className="relative"
+            >
+              {/* Connecting Line */}
+              {index < steps.length - 1 && (
+                <div className="absolute left-10 top-20 w-0.5 h-32 bg-gradient-to-b from-gray-300 to-transparent hidden sm:block opacity-50" />
+              )}
 
-          {/* Timeline Steps */}
-          <div className="space-y-8">
-            {steps.map((step, index) => (
-              <motion.div
-                key={step.number}
-                initial={{ opacity: 0, x: index % 2 === 0 ? -16 : 16 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: index * 0.06 }}
-                className="relative"
-              >
-                {/* Timeline Dot */}
-                <div className="absolute left-0 top-2 sm:left-0 sm:top-6">
-                  <div className="relative">
-                    <div className="w-16 h-16 sm:w-16 sm:h-16 bg-background border-4 border-primary rounded-full flex items-center justify-center shadow-lg">
-                      <CheckCircle2 className="w-8 h-8 text-primary" />
+              <div className="flex items-start gap-6 group">
+                {/* Icon */}
+                <motion.div
+                  whileHover={{ scale: 1.3, rotate: 360 }}
+                  transition={{ type: "spring", stiffness: 300 }}
+                  className="relative z-10 flex-shrink-0"
+                >
+                  <div className={`w-16 h-16 rounded-full bg-gradient-to-br ${step.gradient} p-1 shadow-lg`}>
+                    <div className="w-full h-full rounded-full bg-white flex items-center justify-center">
+                      <CheckCircle2 className={`w-8 h-8 ${step.icon} font-bold`} />
                     </div>
                   </div>
-                </div>
+                  <motion.div
+                    className={`absolute inset-0 rounded-full bg-gradient-to-br ${step.gradient} blur-xl opacity-70 -z-10`}
+                    animate={{ scale: [1, 1.4, 1] }}
+                    transition={{ duration: 2, repeat: Infinity, delay: index * 0.3 }}
+                  />
+                </motion.div>
 
-                {/* Content */}
-                <div className="ml-24 sm:ml-32">
-                  <Card
-                    onClick={() =>
-                      setExpandedStep(expandedStep === step.number ? null : step.number)
-                    }
-                    className="bg-card border-border hover:border-primary/50 transition-all duration-300 cursor-pointer p-6 group"
-                  >
-                    <div className="flex items-start justify-between">
-                      <div className="flex-1">
-                        <div className="flex items-center gap-3 mb-2">
-                          <span className="text-sm font-semibold text-primary bg-primary/10 px-3 py-1 rounded-full">
-                            Step {step.number}
-                          </span>
-                        </div>
-                        <h3 className="text-xl sm:text-2xl font-bold text-foreground mb-2 group-hover:text-primary transition-colors">
-                          {step.title}
-                        </h3>
-                        <p className="text-muted-foreground">{step.description}</p>
-
-                        {/* Expanded Details */}
-                        {expandedStep === step.number && (
-                          <div className="mt-4 pt-4 border-t border-border">
-                            <p className="text-sm text-muted-foreground leading-relaxed">
-                              {step.details}
-                            </p>
-                          </div>
-                        )}
+                {/* COLORFUL CARD */}
+                <motion.div
+                  onClick={() => setExpandedStep(expandedStep === step.number ? null : step.number)}
+                  whileHover={{ y: -10, scale: 1.03 }}
+                  className={`flex-1 bg-gradient-to-br ${step.gradient} ${step.bgOpacity} backdrop-blur-xl border-2 border-white/30 rounded-3xl p-6 cursor-pointer shadow-xl hover:shadow-2xl hover:${step.glow} transition-all duration-400 group`}
+                >
+                  <div className="flex items-start justify-between">
+                    <div className="flex-1">
+                      <div className="flex items-center gap-3 mb-3">
+                        <span className={`text-sm font-bold px-4 py-1.5 rounded-full bg-white/30 backdrop-blur-sm ${step.text} shadow-md`}>
+                          Step {step.number}
+                        </span>
                       </div>
+                      <h3 className={`text-xl sm:text-2xl font-bold mb-2 ${step.text} drop-shadow-md`}>
+                        {step.title}
+                      </h3>
+                      <p className={`text-white/90 leading-relaxed drop-shadow`}>{step.description}</p>
 
-                      {/* Expand Icon */}
-                      <div className="ml-4 flex-shrink-0">
-                        <div
-                          className={`transition-transform duration-300 ${
-                            expandedStep === step.number ? "rotate-180" : ""
-                          }`}
-                        >
-                          <svg
-                            className="w-5 h-5 text-muted-foreground"
-                            fill="none"
-                            stroke="currentColor"
-                            viewBox="0 0 24 24"
-                          >
-                            <path
-                              strokeLinecap="round"
-                              strokeLinejoin="round"
-                              strokeWidth={2}
-                              d="M19 14l-7 7m0 0l-7-7m7 7V3"
-                            />
-                          </svg>
+                      {/* Expanded Details */}
+                      <div
+                        className="overflow-hidden transition-all duration-500 ease-in-out"
+                        style={{
+                          maxHeight: expandedStep === step.number ? "200px" : "0",
+                          opacity: expandedStep === step.number ? 1 : 0,
+                        }}
+                      >
+                        <div className="mt-4 pt-4 border-t border-white/30">
+                          <p className={`text-sm ${step.text} opacity-90 leading-relaxed font-medium`}>
+                            {step.details}
+                          </p>
                         </div>
                       </div>
                     </div>
-                  </Card>
-                </div>
-              </motion.div>
-            ))}
-          </div>
 
-          {/* Final Checkmark */}
-          <motion.div
-            initial={{ opacity: 0, y: 16 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, amount: 0.3 }}
-            transition={{ duration: 0.5 }}
-            className="relative mt-8"
-          >
-            <div className="absolute left-0 top-2 sm:left-0 sm:top-6">
-              <div className="w-16 h-16 sm:w-16 sm:h-16 bg-primary border-4 border-primary rounded-full flex items-center justify-center shadow-lg">
-                <CheckCircle2 className="w-8 h-8 text-primary-foreground" />
+                    {/* Expand Arrow */}
+                    <motion.div
+                      animate={{ rotate: expandedStep === step.number ? 180 : 0 }}
+                      transition={{ duration: 0.3 }}
+                      className="ml-4 flex-shrink-0"
+                    >
+                      <ChevronDown className={`w-6 h-6 text-white/80 group-hover:text-white transition-colors`} />
+                    </motion.div>
+                  </div>
+                </motion.div>
               </div>
-            </div>
-            <div className="ml-24 sm:ml-32">
-              <Card className="bg-primary/10 border-primary/30 p-6">
-                <h3 className="text-xl font-bold text-primary">
-                  Your Publishing Success Starts Here
-                </h3>
-                <p className="text-primary/80 mt-2">
-                  With a clear, proven process, we make your author journey simple, stress-free, and
-                  successful.
-                </p>
-              </Card>
-            </div>
-          </motion.div>
+            </motion.div>
+          ))}
         </div>
+
+        {/* ==== FINAL RAINBOW CTA ==== */}
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          whileInView={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.8, delay: 0.3 }}
+          className="mt-20 p-10 rounded-3xl bg-gradient-to-br from-yellow-400 via-pink-400 to-purple-500 shadow-2xl relative overflow-hidden"
+        >
+          <div className="absolute inset-0 bg-white/20 backdrop-blur-md"></div>
+          <div className="relative z-10 text-center text-white">
+            <h3 className="text-3xl sm:text-4xl font-bold mb-4 drop-shadow-lg">
+              Your Publishing Success Starts Here
+            </h3>
+            <p className="text-lg opacity-90 drop-shadow">
+              With a <span className="font-bold">colorful, proven process</span>, we make your author journey <span className="font-bold">fun and successful</span>.
+            </p>
+          </div>
+          <div className="absolute -bottom-16 -right-16 w-48 h-48 bg-white/20 rounded-full blur-3xl"></div>
+          <div className="absolute -top-16 -left-16 w-40 h-40 bg-white/20 rounded-full blur-3xl"></div>
+        </motion.div>
       </div>
     </section>
   )
