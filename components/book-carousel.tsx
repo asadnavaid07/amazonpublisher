@@ -559,7 +559,7 @@ const books: Book[] = [
     title: "The Midnight Chronicles",
     author: "Sarah Anderson",
     description: "An epic fantasy adventure spanning three kingdoms and one unforgettable destiny.",
-    cover: "https://images.unsplash.com/photo-1544947950-fa07a98d237f?w=400",
+    cover: "/cover10.jpg",
     genre: "Fantasy",
   },
   {
@@ -567,7 +567,7 @@ const books: Book[] = [
     title: "Echoes of Tomorrow",
     author: "James Mitchell",
     description: "A gripping sci‑fi thriller about time travel, paradoxes, and the cost of changing fate.",
-    cover: "https://images.unsplash.com/photo-1532012197267-da84d127e765?w=400",
+    cover: "/book-special.jpg",
     genre: "Science Fiction",
   },
   {
@@ -575,7 +575,7 @@ const books: Book[] = [
     title: "The Last Harbor",
     author: "Emma Richardson",
     description: "A poignant mystery novel set in a coastal town with secrets buried for decades.",
-    cover: "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?w=400",
+    cover: "/cover12.jpg",
     genre: "Mystery",
   },
   {
@@ -583,7 +583,7 @@ const books: Book[] = [
     title: "Whispers in the Garden",
     author: "Michael Chen",
     description: "A romantic drama exploring love, loss, and the beauty of second chances.",
-    cover: "https://images.unsplash.com/photo-1512820790803-83ca734da794?w=400",
+    cover: "/cover11.jpg",
     genre: "Romance",
   },
   {
@@ -591,7 +591,7 @@ const books: Book[] = [
     title: "The Forgotten Code",
     author: "Lisa Thompson",
     description: "A thrilling adventure about decoding ancient mysteries and uncovering hidden truths.",
-    cover: "https://images.unsplash.com/photo-1519682337058-a94d519337bc?w=400",
+    cover: "/cover8.jpg",
     genre: "Adventure",
   },
 ]

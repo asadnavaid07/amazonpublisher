@@ -334,6 +334,64 @@ export default function ProcessTimeline() {
       </div>
 
       <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* ==== BOOK CAROUSEL ==== */}
+        <div className="mb-16 overflow-hidden">
+          <div className="relative py-12">
+            {/* Gradient overlays for fade effect */}
+            <div className="absolute left-0 top-0 bottom-0 w-32 bg-gradient-to-r from-yellow-50 to-transparent z-10 pointer-events-none"></div>
+            <div className="absolute right-0 top-0 bottom-0 w-32 bg-gradient-to-l from-purple-50 to-transparent z-10 pointer-events-none"></div>
+            
+            <motion.div
+              animate={{ x: [0, -1200] }}
+              transition={{
+                duration: 25,
+                repeat: Infinity,
+                ease: "linear",
+              }}
+              className="flex gap-6 items-center"
+            >
+              {/* Duplicate books for seamless loop */}
+              {[...Array(3)].map((_, setIndex) => (
+                <div key={setIndex} className="flex gap-6">
+                  {[3, 4, 5, 6, 7].map((num) => (
+                    <motion.div
+                      key={`${setIndex}-${num}`}
+                      whileHover={{ scale: 1.15, rotateY: 15, y: -10 }}
+                      transition={{ type: "spring", stiffness: 300 }}
+                      className="flex-shrink-0 group cursor-pointer"
+                    >
+                      <div className="relative w-48 h-72 rounded-2xl overflow-hidden shadow-2xl transform perspective-1000">
+                        {/* Book cover */}
+                        <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-300 flex items-center justify-center">
+                          <img
+                            src={`/cover${num}.jpg`}
+                            alt={`Book ${num}`}
+                            className="w-full h-full object-cover"
+                            onError={(e) => {
+                              e.currentTarget.style.display = 'none';
+                              e.currentTarget.parentElement.innerHTML = `<div class="flex flex-col items-center justify-center w-full h-full bg-gradient-to-br from-${['yellow', 'pink', 'purple', 'teal', 'orange'][num % 5]}-400 to-${['orange', 'rose', 'indigo', 'cyan', 'red'][num % 5]}-500"><div class="text-6xl mb-3">📖</div><div class="text-white font-bold text-lg">Book ${num}</div></div>`;
+                            }}
+                          />
+                        </div>
+                        {/* Shine effect */}
+                        <motion.div
+                          className="absolute inset-0 bg-gradient-to-r from-transparent via-white/30 to-transparent"
+                          animate={{ x: [-200, 200] }}
+                          transition={{ duration: 3, repeat: Infinity, repeatDelay: 2, delay: num * 0.3 }}
+                        />
+                        {/* Glow effect on hover */}
+                        <div className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 bg-gradient-to-t from-purple-500/20 to-transparent"></div>
+                      </div>
+                      {/* Shadow */}
+                      <div className="mt-3 h-2 bg-black/10 rounded-full blur-md transform scale-x-75"></div>
+                    </motion.div>
+                  ))}
+                </div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+
         {/* ==== HEADER ==== */}
         <div className="text-center mb-20">
           <h2 className="text-5xl sm:text-6xl font-extrabold bg-gradient-to-r from-yellow-600 via-pink-500 to-purple-600 bg-clip-text text-transparent">

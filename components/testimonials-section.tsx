@@ -496,6 +496,102 @@ export default function TestimonialsSection() {
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full bg-yellow-200/10 rounded-full blur-3xl" />
 
       <div className="relative z-10 container mx-auto px-4">
+         {/* 3D Book Stack Display */}
+        <div className="mb-20 flex justify-center items-center">
+          <div className="relative w-full max-w-6xl h-80 flex items-center justify-center">
+            {/* Central spotlight effect */}
+            <div className="absolute inset-0 bg-gradient-radial from-yellow-300/30 via-transparent to-transparent blur-2xl"></div>
+            
+            {/* Book stack with 3D perspective */}
+            <div className="relative flex items-end justify-center gap-6 perspective-1000" style={{ transformStyle: 'preserve-3d' }}>
+              {[8, 9, 10, 11, 12].map((num, index) => {
+                const rotations = [-25, -12, 0, 12, 25];
+                const scales = [0.85, 0.92, 1, 0.92, 0.85];
+                const zIndexes = [1, 2, 5, 2, 1];
+                const yOffsets = [30, 15, 0, 15, 30];
+                
+                return (
+                  <motion.div
+                    key={num}
+                    initial={{ opacity: 0, y: 100, rotateY: rotations[index] }}
+                    whileInView={{ opacity: 1, y: yOffsets[index], rotateY: rotations[index] }}
+                    transition={{ duration: 0.8, delay: index * 0.15, type: "spring" }}
+                    whileHover={{ 
+                      y: yOffsets[index] - 30, 
+                      rotateY: 0,
+                      scale: 1.1,
+                      zIndex: 10,
+                      transition: { duration: 0.3 }
+                    }}
+                    className="relative cursor-pointer group"
+                    style={{ 
+                      transform: `scale(${scales[index]}) rotateY(${rotations[index]}deg)`,
+                      zIndex: zIndexes[index],
+                      transformStyle: 'preserve-3d'
+                    }}
+                  >
+                    {/* Book container with 3D effect */}
+                    <div className="relative w-56 h-80 rounded-lg overflow-hidden shadow-2xl transform transition-all duration-300">
+                      {/* Main book cover */}
+                      <div className="absolute inset-0 bg-gradient-to-br from-gray-200 to-gray-400 flex items-center justify-center">
+                        <img
+                          src={`/cover${num}.jpg`}
+                          alt={`Featured Book ${num}`}
+                          className="w-full h-full object-cover"
+                          onError={(e) => {
+                            const colors = [
+                              ['from-amber-400', 'to-orange-500'],
+                              ['from-yellow-400', 'to-amber-500'],
+                              ['from-orange-400', 'to-red-500'],
+                              ['from-yellow-300', 'to-orange-400'],
+                              ['from-amber-300', 'to-yellow-500']
+                            ];
+                            const [from, to] = colors[index];
+                            e.currentTarget.style.display = 'none';
+                            e.currentTarget.parentElement.innerHTML = `
+                              <div class="flex flex-col items-center justify-center w-full h-full bg-gradient-to-br ${from} ${to} p-4">
+                                <div class="text-7xl mb-3">📚</div>
+                                <div class="text-white font-bold text-center text-lg">Bestseller</div>
+                                <div class="text-white/80 text-sm mt-1">#${num}</div>
+                              </div>
+                            `;
+                          }}
+                        />
+                      </div>
+                      
+                      {/* Book spine (3D effect) */}
+                      <div 
+                        className="absolute left-0 top-0 bottom-0 w-4 bg-gradient-to-r from-gray-800 to-gray-600"
+                        style={{ 
+                          transform: 'rotateY(-90deg) translateZ(-28px)',
+                          transformOrigin: 'left'
+                        }}
+                      />
+                      
+                      {/* Shine effect */}
+                      <motion.div
+                        className="absolute inset-0 bg-gradient-to-tr from-transparent via-white/40 to-transparent opacity-0 group-hover:opacity-100"
+                        animate={{ x: [-100, 200] }}
+                        transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 3, delay: index * 0.2 }}
+                      />
+                      
+                      {/* Golden glow on hover */}
+                      <div className="absolute inset-0 bg-gradient-to-t from-yellow-400/0 via-yellow-400/0 to-yellow-400/0 group-hover:from-yellow-400/30 group-hover:via-yellow-400/10 transition-all duration-300"></div>
+                    </div>
+                    
+                    {/* Shadow */}
+                    <div className="absolute -bottom-6 left-1/2 -translate-x-1/2 w-44 h-4 bg-black/20 rounded-full blur-lg group-hover:w-48 group-hover:bg-black/30 transition-all duration-300"></div>
+                    
+                    {/* Radiating glow */}
+                    <div className="absolute inset-0 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                      <div className="absolute inset-0 bg-yellow-400/30 rounded-lg blur-xl scale-110"></div>
+                    </div>
+                  </motion.div>
+                );
+              })}
+            </div>
+          </div>
+        </div>
         {/* Header */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
