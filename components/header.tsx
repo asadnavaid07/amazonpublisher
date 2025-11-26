@@ -91,7 +91,7 @@ export default function Header() {
                         {serviceItems.map((service) => (
                           <li key={service}>
                             <a
-                              href={`/services/${service.toLowerCase().replace(/\s+/g, '-').replace(/&/g, 'and')}`}
+                              href={`/services`}
                               className="block px-4 py-2.5 text-sm text-gray-700 hover:text-[#ECA212] hover:bg-[#FFF8E7] transition-all duration-200"
                             >
                               {service}
