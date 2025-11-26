@@ -254,7 +254,7 @@ export default function Header() {
       <div className="w-full bg-gradient-to-r from-[#ECA212] to-[#D89010] text-white py-2.5 px-4 text-center text-sm font-medium z-[9999]">
         <span className="inline-block">
           <strong>Important:</strong> Fraudulent sites are impersonating Amazon Publisher. The only official website is{" "}
-          <span className="font-bold underline">www.amazonpublisher.com</span>
+          <span className="font-bold underline">www.amazonauthorpartners.com</span>
         </span>
       </div>
 
