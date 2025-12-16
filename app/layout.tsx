@@ -9,7 +9,7 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 const display = Sora({ subsets: ["latin"], variable: "--font-display" })
 
 export const metadata: Metadata = {
-  title: "Amazon Publisher - Transform Your Manuscript Into a Masterpiece",
+  title: "Amazon Author Partners - Transform Your Manuscript Into a Masterpiece",
   description: "Professional book publishing services. Global distribution, expert editing, and author support.",
   generator: "v0.app",
 }

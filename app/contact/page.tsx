@@ -172,7 +172,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground mb-1">Call Us</p>
-                      <p className="text-foreground font-medium">+1 (713) 322-4829</p>
+                      <p className="text-foreground font-medium">+1 305-765-7102</p>
                     </div>
                   </motion.a>
 
@@ -185,7 +185,7 @@ export default function ContactPage() {
                     </div>
                     <div>
                       <p className="text-sm text-muted-foreground mb-1">Location</p>
-                      <p className="text-foreground font-medium">St. Petersburg, Florida</p>
+                      <p className="text-foreground font-medium">ST PETERSBURG, FL 33702</p>
                     </div>
                   </motion.div>
                 </div>
