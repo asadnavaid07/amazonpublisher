@@ -377,9 +377,10 @@
 
 "use client"
 
+import { useRef } from "react"
 import { Button } from "@/components/ui/button"
 import { ArrowRight, Star } from "lucide-react"
-import { motion } from "framer-motion"
+import { motion, useInView } from "framer-motion"
 import Image from "next/image"
 // Removed unused state and useEffect for cleaner component lifecycle
 
@@ -398,42 +399,45 @@ const bookCoversRow2 = [
 ];
 
 // Helper function to render a single row of books
-// This function duplicates the array only for the visual illusion, 
-// which is less performant than a pure CSS loop, but maintains the original look of the Marquee component.
-// A more modern approach would be to calculate the animation based on the single list width, but this keeps the structure close to the original.
-const BookMarqueeRow = ({ covers, animationClass }) => {
-    // Render the set of covers twice to enable the "infinite" slide effect
-    const renderedCovers = [...covers, ...covers]; 
+// Duplicates the covers array for a seamless marquee effect while minimizing eager image loading.
+const BookMarqueeRow = ({
+  covers,
+  animationClass,
+  priorityFirst = false,
+}: {
+  covers: string[]
+  animationClass: string
+  priorityFirst?: boolean
+}) => {
+  const renderedCovers = [...covers, ...covers]
 
-    return (
-        <div className="flex overflow-hidden">
-            {/* OPTIMIZATION: Removed redundant w-[200%] and flex gap-4 wrapper on the inner div */}
-            <div className={`flex gap-4 ${animationClass} shrink-0`}> 
-                {renderedCovers.map((src, i) => (
-                    <div
-                        key={i}
-                        className="shrink-0 w-44 sm:w-56 md:w-64 my-3 rounded-2xl overflow-hidden border bg-white shadow-lg"
-                    >
-                        <Image
-                            src={src}
-                            alt="Book cover"
-                            width={600}
-                            height={800}
-                            // Only set priority for the first few images to improve LCP
-                            priority={i < 3} 
-                            className="w-full h-36 sm:h-40 md:h-48 object-cover"
-                        />
-                    </div>
-                ))}
-            </div>
-        </div>
-    );
-};
+  return (
+    <div className="flex overflow-hidden">
+      <div className={`flex gap-4 ${animationClass} shrink-0`}>
+        {renderedCovers.map((src, i) => (
+          <div
+            key={i}
+            className="shrink-0 w-44 sm:w-56 md:w-64 my-3 rounded-2xl overflow-hidden border bg-white shadow-lg"
+          >
+            <Image
+              src={src}
+              alt="Book cover"
+              width={600}
+              height={800}
+              sizes="(min-width: 1024px) 16rem, (min-width: 640px) 14rem, 11rem"
+              // Only the very first image in the first row is priority to improve LCP
+              priority={priorityFirst && i === 0}
+              className="w-full h-36 sm:h-40 md:h-48 object-cover"
+            />
+          </div>
+        ))}
+      </div>
+    </div>
+  )
+}
 
 
 export default function HeroSection() {
-  // Removed useState(mounted) and useEffect
-
   const containerVariants = {
     hidden: { opacity: 0 },
     visible: {
@@ -529,26 +533,12 @@ export default function HeroSection() {
           </div>
 
           {/* ==== RIGHT (OPTIMIZED MARQUEE) ==== */}
-          <div className="relative mx-auto md:mx-0 w-full max-w-[500px] sm:max-w-[560px] md:max-w-[620px] overflow-hidden">
-            <div className="absolute -inset-8 -z-10 bg-gradient-to-tr from-yellow-300/30 via-pink-200/20 to-purple-300/30 blur-3xl rounded-[48px]" />
-
-            {/* ---- Row 1 ---- */}
-            <div className="relative overflow-hidden rounded-[28px] border-4 border-yellow-300/30 bg-gradient-to-br from-white/90 to-yellow-50/80 backdrop-blur-sm shadow-[0_0_40px_rgba(255,204,0,0.25)]">
-              {/* The MarqueeRow component handles the rendering and infinite content duplication */}
-                <BookMarqueeRow covers={bookCoversRow1} animationClass="animate-slide" />
-            </div>
-
-            {/* ---- Row 2 ---- */}
-            <div className="mt-5 relative overflow-hidden rounded-[28px] border-4 border-pink-300/30 bg-gradient-to-br from-white/90 to-pink-50/80 backdrop-blur-sm shadow-[0_0_40px_rgba(255,102,204,0.25)]">
-                {/* The MarqueeRow component handles the rendering and infinite content duplication */}
-                <BookMarqueeRow covers={bookCoversRow2} animationClass="animate-slide-reverse" />
-            </div>
-          </div>
+          <HeroMarquee />
 
         </div>
       </motion.div>
 
-      {/* ==== Animations (Unchanged, CSS animation is performant) ==== */}
+      {/* ==== Animations (CSS animation, now toggled via in-view) ==== */}
       <style jsx>{`
         @keyframes slide {
           /* The animation moves the content 50% of the total width */
@@ -569,5 +559,36 @@ export default function HeroSection() {
         }
       `}</style>
     </section>
+  )
+}
+
+function HeroMarquee() {
+  const marqueeRef = useRef<HTMLDivElement | null>(null)
+  const inView = useInView(marqueeRef, { amount: 0.2 })
+
+  return (
+    <div
+      ref={marqueeRef}
+      className="relative mx-auto md:mx-0 w-full max-w-[500px] sm:max-w-[560px] md:max-w-[620px] overflow-hidden"
+    >
+      <div className="absolute -inset-8 -z-10 bg-gradient-to-tr from-yellow-300/30 via-pink-200/20 to-purple-300/30 blur-3xl rounded-[48px]" />
+
+      {/* ---- Row 1 ---- */}
+      <div className="relative overflow-hidden rounded-[28px] border-4 border-yellow-300/30 bg-gradient-to-br from-white/90 to-yellow-50/80 backdrop-blur-sm shadow-[0_0_40px_rgba(255,204,0,0.25)]">
+        <BookMarqueeRow
+          covers={bookCoversRow1}
+          animationClass={inView ? "animate-slide" : ""}
+          priorityFirst
+        />
+      </div>
+
+      {/* ---- Row 2 ---- */}
+      <div className="mt-5 relative overflow-hidden rounded-[28px] border-4 border-pink-300/30 bg-gradient-to-br from-white/90 to-pink-50/80 backdrop-blur-sm shadow-[0_0_40px_rgba(255,102,204,0,0.25)]">
+        <BookMarqueeRow
+          covers={bookCoversRow2}
+          animationClass={inView ? "animate-slide-reverse" : ""}
+        />
+      </div>
+    </div>
   )
 }

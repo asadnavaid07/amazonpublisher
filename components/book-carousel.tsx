@@ -141,12 +141,13 @@ export default function LampSection() {
             >
               {/* Front: Cover */}
               <div className="absolute inset-0 backface-hidden rounded-3xl overflow-hidden shadow-2xl border-2 border-yellow-300/50">
-                <img
-                  src={currentBook.cover}
-                  alt={currentBook.title}
-                  className="w-full h-full object-cover"
-                  loading="eager"
-                />
+              <img
+                src={currentBook.cover}
+                alt={currentBook.title}
+                className="w-full h-full object-cover"
+                loading="lazy"
+                decoding="async"
+              />
                 <div className="absolute inset-0 bg-gradient-to-t from-yellow-900/80 via-yellow-900/20 to-transparent" />
                 <div className="absolute top-5 right-5 bg-gradient-to-r from-yellow-400 to-orange-400 text-yellow-900 px-4 py-1.5 rounded-full text-sm font-bold shadow-lg">
                   NEW

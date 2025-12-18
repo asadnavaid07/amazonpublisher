@@ -278,7 +278,7 @@
 
 "use client"
 
-import { useEffect, useState } from "react"
+import { useEffect, useState, useRef } from "react"
 import Image from "next/image"
 
 type BannerItem = {
@@ -294,15 +294,31 @@ type BannerProps = {
 export default function Banner({ banner }: BannerProps) {
   const [activeIndex, setActiveIndex] = useState(0)
   const [cardsVisible, setCardsVisible] = useState(false)
+  const sectionRef = useRef<HTMLElement | null>(null)
+  const [inView, setInView] = useState(false)
 
   useEffect(() => {
-    setCardsVisible(true)
+    // simple intersection observer to know when banner is on screen
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const entry = entries[0]
+        setInView(entry.isIntersecting)
+      },
+      { threshold: 0.2 }
+    )
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current)
+    }
 
     const interval = setInterval(() => {
       setActiveIndex((prev) => (prev + 1) % banner.length)
     }, 5000)
 
-    return () => clearInterval(interval)
+    return () => {
+      clearInterval(interval)
+      observer.disconnect()
+    }
   }, [banner.length])
 
   const title = banner[activeIndex]?.title ?? ""
@@ -317,8 +333,17 @@ export default function Banner({ banner }: BannerProps) {
     { img: "/cover4.webp", rotation: "rotate-1" },
   ]
 
+  useEffect(() => {
+    if (inView) {
+      setCardsVisible(true)
+    }
+  }, [inView])
+
   return (
-    <section className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+    <section
+      ref={sectionRef}
+      className="relative min-h-screen overflow-hidden bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900"
+    >
       {/* Background */}
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,162,18,0.1),transparent_50%)]" />
@@ -375,16 +400,23 @@ export default function Banner({ banner }: BannerProps) {
             <div
               key={i}
               className={`p-4 rounded-xl shadow-2xl bg-white transform ${card.rotation}
-                ${cardsVisible ? "opacity-100 translate-y-0 scale-100" : "opacity-0 translate-y-20 scale-90"}
-                transition-all duration-700 delay-${i * 20} animate-float`}
+                ${
+                  cardsVisible
+                    ? "opacity-100 translate-y-0 scale-100"
+                    : "opacity-0 translate-y-20 scale-90"
+                }
+                transition-all duration-700 delay-${i * 20} ${
+                  inView ? "animate-float" : ""
+                }`}
             >
               <Image
                 src={card.img}
                 alt="Book cover"
                 width={300}
                 height={400}
+                sizes="(min-width: 1024px) 12rem, (min-width: 640px) 10rem, 8rem"
                 className="rounded-lg object-cover"
-                priority
+                priority={i === 0}
               />
             </div>
           ))}
