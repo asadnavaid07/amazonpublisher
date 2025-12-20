@@ -1,26 +1,27 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { Menu, X, ChevronDown, ShoppingCart, User } from "lucide-react"
+import Image from "next/image";
+import { useState, useEffect } from "react";
+import { Menu, X, ChevronDown, ShoppingCart, User } from "lucide-react";
 
 export default function Header() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [isServicesOpen, setIsServicesOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
+  const [isOpen, setIsOpen] = useState(false);
+  const [isServicesOpen, setIsServicesOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 10)
-    }
-    window.addEventListener('scroll', handleScroll)
-    return () => window.removeEventListener('scroll', handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 10);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { label: "Services", href: "/services", hasDropdown: true },
     { label: "Blogs", href: "/blogs" },
     { label: "About", href: "/about-us" },
-  ]
+  ];
 
   const serviceItems = [
     "Ghostwriting",
@@ -29,28 +30,39 @@ export default function Header() {
     "Book Cover & Design",
     "Book Promotion & Marketing",
     "E-Book & Audio Book Production",
-  ]
+  ];
 
   return (
     <>
       {/* Top Warning Banner */}
       <div className="w-full bg-gradient-to-r from-[#ECA212] to-[#D89010] text-white py-2.5 px-4 text-center text-sm font-medium z-[9999]">
         <span className="inline-block">
-          <strong>Important:</strong> Fraudulent sites are impersonating Amazon Author Partners. The only official website is{" "}
-          <span className="font-bold underline">www.amazonauthorpartners.com</span>
+          <strong>Important:</strong> Fraudulent sites are impersonating Amazon
+          Author Partners. The only official website is{" "}
+          <span className="font-bold underline">
+            www.amazonauthorpartners.com
+          </span>
         </span>
       </div>
 
       {/* Main Header */}
-      <header 
+      <header
         className={`sticky top-0 z-[9999] w-full p-4 bg-white transition-shadow duration-300 ${
-          scrolled ? 'shadow-md' : 'border-b border-gray-200'
+          scrolled ? "shadow-md" : "border-b border-gray-200"
         }`}
       >
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
-            <a href="/" className="flex items-center group">
+            <a href="/" className="flex items-center gap-3 group">
+              <Image
+                src="/logo.png"
+                alt="Amazon Author Partners Logo"
+                width={150}
+                height={150}
+                priority
+                className="object-contain"
+              />
               <span className="font-bold text-2xl text-gray-900 group-hover:text-[#ECA212] transition-colors duration-200">
                 Amazon Author Partners
               </span>
@@ -71,10 +83,10 @@ export default function Header() {
                       className="flex items-center gap-1 text-base font-medium text-gray-700 hover:text-gray-900 transition-colors duration-200"
                     >
                       {item.label}
-                      <ChevronDown 
-                        size={16} 
+                      <ChevronDown
+                        size={16}
                         className={`transition-transform duration-300 ${
-                          isServicesOpen ? 'rotate-180' : ''
+                          isServicesOpen ? "rotate-180" : ""
                         }`}
                       />
                     </a>
@@ -115,8 +127,6 @@ export default function Header() {
 
             {/* Right Side Icons & CTA */}
             <div className="hidden md:flex items-center gap-4">
-              
-
               {/* Contact Us Button */}
               <a
                 href="/contact"
@@ -188,8 +198,6 @@ export default function Header() {
           </div>
         </nav>
       </header>
-
-      
     </>
-  )
+  );
 }

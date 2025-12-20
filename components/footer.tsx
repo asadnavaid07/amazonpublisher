@@ -1,6 +1,6 @@
-import Link from "next/link"
-import { Mail, Phone, MapPin } from "lucide-react"
-
+import Link from "next/link";
+import { Mail, Phone, MapPin } from "lucide-react";
+import Image from "next/image";
 export default function Footer() {
   return (
     <footer className="bg-white border-t border-border">
@@ -8,13 +8,23 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
           {/* Brand */}
           <div>
-            <div className="flex items-center gap-2 mb-4">
-              <div className="w-10 h-10 bg-primary rounded-lg flex items-center justify-center">
-                <span className="text-primary-foreground font-bold">EP</span>
-              </div>
-              <span className="font-bold text-foreground">Amazon Author Partners</span>
-            </div>
-            <p className="text-sm text-muted-foreground">Transforming manuscripts into masterpieces since 2010.</p>
+            <Link href="/" className="flex items-center gap-3 mb-4">
+              <Image
+                src="/logo.png"
+                alt="Amazon Author Partners Logo"
+                width={80}
+                height={80}
+                className="object-contain"
+                priority
+              />
+              <span className="font-bold text-foreground text-lg">
+                Amazon Author Partners
+              </span>
+            </Link>
+
+            <p className="text-sm text-muted-foreground">
+              Transforming manuscripts into masterpieces since 2010.
+            </p>
           </div>
 
           {/* Quick Links */}
@@ -23,7 +33,10 @@ export default function Footer() {
             <ul className="space-y-2">
               {["Home", "Services", "Process", "Testimonials"].map((link) => (
                 <li key={link}>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                  <Link
+                    href="#"
+                    className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                  >
                     {link}
                   </Link>
                 </li>
@@ -35,13 +48,18 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-foreground mb-4">Services</h4>
             <ul className="space-y-2">
-              {["Editing", "Design", "Distribution", "Marketing"].map((service) => (
-                <li key={service}>
-                  <Link href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                    {service}
-                  </Link>
-                </li>
-              ))}
+              {["Editing", "Design", "Distribution", "Marketing"].map(
+                (service) => (
+                  <li key={service}>
+                    <Link
+                      href="#"
+                      className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                    >
+                      {service}
+                    </Link>
+                  </li>
+                )
+              )}
             </ul>
           </div>
 
@@ -51,14 +69,20 @@ export default function Footer() {
             <ul className="space-y-3">
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Mail className="w-4 h-4 text-primary" />
-                <a href="mailto:info@amazonauthorpartners.com" className="hover:text-primary transition-colors">
+                <a
+                  href="mailto:info@amazonauthorpartners.com"
+                  className="hover:text-primary transition-colors"
+                >
                   info@amazonauthorpartners.com
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
                 <Phone className="w-4 h-4 text-primary" />
-                <a href="tel:+1234567890" className="hover:text-primary transition-colors">
-                   +1 305-765-7102
+                <a
+                  href="tel:+1234567890"
+                  className="hover:text-primary transition-colors"
+                >
+                  +1 305-765-7102
                 </a>
               </li>
               <li className="flex items-center gap-2 text-sm text-muted-foreground">
@@ -71,16 +95,24 @@ export default function Footer() {
 
         {/* Bottom */}
         <div className="border-t border-border pt-8 flex flex-col sm:flex-row justify-between items-center gap-4">
-          <p className="text-sm text-muted-foreground">&copy; 2025 Amazon Author Partners. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground">
+            &copy; 2025 Amazon Author Partners. All rights reserved.
+          </p>
           <div className="flex gap-6">
-            {["Privacy Policy", "Terms of Service", "Cookie Policy"].map((link) => (
-              <Link key={link} href="#" className="text-sm text-muted-foreground hover:text-primary transition-colors">
-                {link}
-              </Link>
-            ))}
+            {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(
+              (link) => (
+                <Link
+                  key={link}
+                  href="#"
+                  className="text-sm text-muted-foreground hover:text-primary transition-colors"
+                >
+                  {link}
+                </Link>
+              )
+            )}
           </div>
         </div>
       </div>
     </footer>
-  )
+  );
 }
