@@ -9,10 +9,15 @@ const _geistMono = Geist_Mono({ subsets: ["latin"] })
 const display = Sora({ subsets: ["latin"], variable: "--font-display" })
 
 export const metadata: Metadata = {
-  title: "Amazon Author Partners - Transform Your Manuscript Into a Masterpiece",
-  description: "Professional book publishing services. Global distribution, expert editing, and author support.",
-  generator: "v0.app",
+  title: "Amazon Author Partners",
+  description:
+    "Professional book publishing services. Global distribution, expert editing, and author support.",
+  generator: "fahad",
+  verification: {
+    google: "sRUYHrpmVoLoDaUYgyCTS6PQMfvtJd-SDpsiuS3cfl0",
+  },
 }
+
 
 export default function RootLayout({
   children,
