@@ -31,13 +31,13 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-foreground mb-4">Quick Links</h4>
             <ul className="space-y-2">
-              {["Home", "Services", "Process", "Testimonials"].map((link) => (
-                <li key={link}>
+              {[["Home", "/"], ["Services", "/services"], ["About Us", "/about-us"], ["Blogs", "/blogs"]].map((link) => (
+                <li key={link[0]}>
                   <Link
-                    href="#"
+                    href={link[1]}
                     className="text-sm text-muted-foreground hover:text-primary transition-colors"
                   >
-                    {link}
+                    {link[0]}
                   </Link>
                 </li>
               ))}
@@ -48,14 +48,14 @@ export default function Footer() {
           <div>
             <h4 className="font-semibold text-foreground mb-4">Services</h4>
             <ul className="space-y-2">
-              {["Editing", "Design", "Distribution", "Marketing"].map(
+              {[["Ghostwriting", "/services/ghostwriting"], ["Book Cover Design", "/services/book-cover-design"], ["Book Promotion & Marketing", "/services/book-promotion-marketing"], ["Proofreading", "/services/editing-proofreading"]].map(
                 (service) => (
-                  <li key={service}>
+                  <li key={service[0]}>
                     <Link
-                      href="#"
+                      href={service[1]}
                       className="text-sm text-muted-foreground hover:text-primary transition-colors"
                     >
-                      {service}
+                      {service[0]}
                     </Link>
                   </li>
                 )
@@ -98,7 +98,7 @@ export default function Footer() {
           <p className="text-sm text-muted-foreground">
             &copy; 2025 Amazon Author Partners. All rights reserved.
           </p>
-          <div className="flex gap-6">
+          {/* <div className="flex gap-6">
             {["Privacy Policy", "Terms of Service", "Cookie Policy"].map(
               (link) => (
                 <Link
@@ -110,7 +110,7 @@ export default function Footer() {
                 </Link>
               )
             )}
-          </div>
+          </div> */}
         </div>
       </div>
     </footer>
