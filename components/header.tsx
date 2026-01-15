@@ -55,12 +55,12 @@ export default function Header() {
         <nav className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
-            <Link href="/" className="flex items-center gap-3 group">
+            <Link href="/" className="flex items-center pt-3 gap-3 group">
               <Image
                 src="/logo.png"
                 alt="Amazon Author Partners Logo"
-                width={150}
-                height={150}
+                width={180}
+                height={180}
                 priority
                 className="object-contain"
               />
