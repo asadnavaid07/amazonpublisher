@@ -1,13 +1,8 @@
-"use client"
+import { Button } from "@/components/ui/button";
+import { ArrowRight, Star } from "lucide-react";
+import Image from "next/image";
 
-import { useRef } from "react"
-import { Button } from "@/components/ui/button"
-import { ArrowRight, Star } from "lucide-react"
-import { motion, useInView } from "framer-motion"
-import Image from "next/image"
-// Removed unused state and useEffect for cleaner component lifecycle
-
-// Define the book covers array once
+// --- Data Definition (Server Side) ---
 const bookCoversRow1 = [
   "/cover1.webp",
   "/cover2.webp",
@@ -21,70 +16,53 @@ const bookCoversRow2 = [
   "/cover13.webp",
 ];
 
-// Helper function to render a single row of books
-// Duplicates the covers array for a seamless marquee effect while minimizing eager image loading.
+// --- Helper to render the static rows ---
 const BookMarqueeRow = ({
   covers,
-  animationClass,
+  direction = "normal", 
   priorityFirst = false,
 }: {
-  covers: string[]
-  animationClass: string
-  priorityFirst?: boolean
+  covers: string[];
+  direction?: "normal" | "reverse";
+  priorityFirst?: boolean;
 }) => {
-  const renderedCovers = [...covers, ...covers]
+  // Duplicate images 4 times for smooth loop
+  const renderedCovers = [...covers, ...covers, ...covers, ...covers];
+  
+  // Use the classes defined in globals.css
+  const animationClass = direction === "normal" ? "animate-slide" : "animate-slide-reverse";
 
   return (
-    <div className="flex overflow-hidden">
-      <div className={`flex gap-4 ${animationClass} shrink-0`}>
+    <div className="flex overflow-hidden select-none pointer-events-none">
+      <div className={`flex gap-4 shrink-0 ${animationClass}`}>
         {renderedCovers.map((src, i) => (
           <div
             key={i}
-            className="shrink-0 w-44 sm:w-56 md:w-64 my-3 rounded-2xl overflow-hidden border bg-white shadow-lg"
+            className="shrink-0 w-32 sm:w-44 md:w-56 lg:w-64 my-3 rounded-xl sm:rounded-2xl overflow-hidden border bg-white shadow-lg"
           >
             <Image
               src={src}
               alt="Book cover"
               width={600}
               height={800}
-              sizes="(min-width: 1024px) 16rem, (min-width: 640px) 14rem, 11rem"
-              // Only the very first image in the first row is priority to improve LCP
+              sizes="(min-width: 1024px) 16rem, (min-width: 640px) 11rem, 8rem"
               priority={priorityFirst && i === 0}
-              className="w-full h-36 sm:h-40 md:h-48 object-cover"
+              className="w-full h-28 sm:h-36 md:h-48 object-cover"
             />
           </div>
         ))}
       </div>
     </div>
-  )
-}
-
+  );
+};
 
 export default function HeroSection() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      // Adjusted delayChildren slightly to speed up initial load
-      transition: { staggerChildren: 0.15, delayChildren: 0 }, 
-    },
-  }
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.5 }, // Slightly faster duration
-    },
-  }
-
   return (
     <section
       id="home"
-      className="relative min-h-[72vh] md:min-h-[78vh] flex items-center overflow-hidden pt-6 md:pt-8 w-full max-w-[100vw]"
+      className="relative min-h-[72vh] md:min-h-[85vh] flex items-center overflow-hidden pt-6 md:pt-8 w-full max-w-[100vw]"
     >
-      {/* ==== Background (Unchanged, CSS backgrounds are performant) ==== */}
+      {/* ==== STATIC BACKGROUND ==== */}
       <div className="absolute inset-0 -z-10 bg-gradient-to-br from-yellow-100 via-pink-50 to-purple-100" />
       <div
         className="pointer-events-none absolute inset-0 -z-10 opacity-20"
@@ -101,36 +79,21 @@ export default function HeroSection() {
         }}
       />
 
-      {/* ==== CONTENT ==== */}
-      <motion.div
-        className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-x-hidden"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.3 }}
-        // Removed redundant layout={false}
-      >
+      {/* ==== CONTENT CONTAINER ==== */}
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-x-hidden">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-10 md:gap-12 items-center">
           
-          {/* ==== LEFT ==== */}
-          <div className="text-center md:text-left">
-            <motion.h1
-              variants={itemVariants}
-              // Removed redundant layout={false}
-              className="mt-3 text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-balance"
-            >
+          {/* ==== LEFT CONTENT (Static HTML) ==== */}
+          <div className="text-center md:text-left space-y-7">
+            <h1 className="mt-3 text-[2rem] sm:text-4xl md:text-6xl lg:text-7xl font-bold leading-tight text-balance">
               Publish your{" "}
               <span className="inline-block bg-gradient-to-r from-yellow-400 via-orange-500 to-pink-500 text-transparent bg-clip-text px-3 pb-1 rounded-xl">
                 Book
               </span>{" "}
               on Amazon
-            </motion.h1>
+            </h1>
 
-            <motion.div
-              variants={itemVariants}
-              // Removed redundant layout={false}
-              className="mt-7 flex flex-col sm:flex-row gap-4 justify-center md:justify-start"
-            >
+            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
               <Button
                 size="lg"
                 className="bg-gradient-to-r from-yellow-400 to-orange-500 hover:from-yellow-500 hover:to-orange-600 text-white font-semibold shadow-lg hover:shadow-yellow-400/50 transform hover:-translate-y-0.5 transition-all"
@@ -138,13 +101,9 @@ export default function HeroSection() {
                 Get started
                 <ArrowRight className="ml-2 w-4 h-4" />
               </Button>
-            </motion.div>
+            </div>
 
-            <motion.div
-              variants={itemVariants}
-              // Removed redundant layout={false}
-              className="mt-7 flex flex-wrap items-center gap-4 justify-center md:justify-start text-sm"
-            >
+            <div className="flex flex-wrap items-center gap-4 justify-center md:justify-start text-sm">
               <div className="flex items-center gap-2">
                 <Star className="w-4 h-4 text-yellow-500 fill-yellow-500" />
                 <span className="font-semibold text-orange-700">4.9/5 rating</span>
@@ -152,66 +111,33 @@ export default function HeroSection() {
               <div className="text-purple-700 font-medium">
                 10k+ books formatted
               </div>
-            </motion.div>
+            </div>
           </div>
 
-          {/* ==== RIGHT (OPTIMIZED MARQUEE) ==== */}
-          <HeroMarquee />
+          {/* ==== RIGHT CONTENT (Marquee) ==== */}
+          <div className="relative mx-auto md:mx-0 w-full max-w-[500px] sm:max-w-[560px] md:max-w-[620px] overflow-hidden">
+            <div className="absolute -inset-8 -z-10 bg-gradient-to-tr from-yellow-300/30 via-pink-200/20 to-purple-300/30 blur-3xl rounded-[48px]" />
+
+            {/* Row 1: Left Slide */}
+            <div className="relative overflow-hidden rounded-[20px] sm:rounded-[28px] border-4 border-yellow-300/30 bg-gradient-to-br from-white/90 to-yellow-50/80 backdrop-blur-sm shadow-[0_0_40px_rgba(255,204,0,0.25)]">
+              <BookMarqueeRow
+                covers={bookCoversRow1}
+                direction="normal"
+                priorityFirst
+              />
+            </div>
+
+            {/* Row 2: Right Slide */}
+            <div className="mt-5 relative overflow-hidden rounded-[20px] sm:rounded-[28px] border-4 border-pink-300/30 bg-gradient-to-br from-white/90 to-pink-50/80 backdrop-blur-sm shadow-[0_0_40px_rgba(255,102,204,0,0.25)]">
+              <BookMarqueeRow
+                covers={bookCoversRow2}
+                direction="reverse"
+              />
+            </div>
+          </div>
 
         </div>
-      </motion.div>
-
-      {/* ==== Animations (CSS animation, now toggled via in-view) ==== */}
-      <style jsx>{`
-        @keyframes slide {
-          /* The animation moves the content 50% of the total width */
-          from { transform: translateX(0); }
-          to { transform: translateX(-50%); }
-        }
-        @keyframes slide-reverse {
-          /* The reverse animation moves from 50% back to 0% */
-          from { transform: translateX(-50%); }
-          to { transform: translateX(0); }
-        }
-        .animate-slide {
-          /* Using the same 18s duration */
-          animation: slide 18s linear infinite;
-        }
-        .animate-slide-reverse {
-          animation: slide-reverse 18s linear infinite;
-        }
-      `}</style>
+      </div>
     </section>
-  )
-}
-
-function HeroMarquee() {
-  const marqueeRef = useRef<HTMLDivElement | null>(null)
-  const inView = useInView(marqueeRef, { amount: 0.2 })
-
-  return (
-    <div
-      ref={marqueeRef}
-      className="relative mx-auto md:mx-0 w-full max-w-[500px] sm:max-w-[560px] md:max-w-[620px] overflow-hidden"
-    >
-      <div className="absolute -inset-8 -z-10 bg-gradient-to-tr from-yellow-300/30 via-pink-200/20 to-purple-300/30 blur-3xl rounded-[48px]" />
-
-      {/* ---- Row 1 ---- */}
-      <div className="relative overflow-hidden rounded-[28px] border-4 border-yellow-300/30 bg-gradient-to-br from-white/90 to-yellow-50/80 backdrop-blur-sm shadow-[0_0_40px_rgba(255,204,0,0.25)]">
-        <BookMarqueeRow
-          covers={bookCoversRow1}
-          animationClass={inView ? "animate-slide" : ""}
-          priorityFirst
-        />
-      </div>
-
-      {/* ---- Row 2 ---- */}
-      <div className="mt-5 relative overflow-hidden rounded-[28px] border-4 border-pink-300/30 bg-gradient-to-br from-white/90 to-pink-50/80 backdrop-blur-sm shadow-[0_0_40px_rgba(255,102,204,0,0.25)]">
-        <BookMarqueeRow
-          covers={bookCoversRow2}
-          animationClass={inView ? "animate-slide-reverse" : ""}
-        />
-      </div>
-    </div>
-  )
+  );
 }

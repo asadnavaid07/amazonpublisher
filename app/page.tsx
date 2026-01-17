@@ -19,25 +19,7 @@ export default function Home() {
       <Header />
 
       {/* Banner */}
-      <Banner
-        banner={[
-          {
-            title: "Publish Your Book Globally",
-            subtitle: "Reach readers worldwide with professional publishing services.",
-            buttonText: "Get Started",
-          },
-          {
-            title: "Edit, Design, and Distribute",
-            subtitle: "From editing to cover design, we handle it all end-to-end.",
-            buttonText: "See Services",
-          },
-          {
-            title: "Launch on Amazon and Beyond",
-            subtitle: "Maximize visibility across top marketplaces and formats.",
-            buttonText: "Learn More",
-          },
-        ]}
-      />
+      <Banner/>
 
       {/* Hero Section – HAS ITS OWN WIDTH/PADDING */}
       <HeroSection />

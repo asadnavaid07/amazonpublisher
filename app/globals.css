@@ -164,3 +164,225 @@
   0% { transform: translateX(-100%); }
   100% { transform: translateX(0); }
 }
+
+/* app/globals.css */
+
+@keyframes slide {
+  from { transform: translateX(0); }
+  to { transform: translateX(-50%); }
+}
+
+@keyframes slide-reverse {
+  from { transform: translateX(-50%); }
+  to { transform: translateX(0); }
+}
+
+/* Helper classes for the marquee */
+.animate-slide {
+  animation: slide 30s linear infinite;
+}
+
+.animate-slide-reverse {
+  animation: slide-reverse 30s linear infinite;
+}
+
+/* Pause animation on hover */
+.animate-slide:hover, 
+.animate-slide-reverse:hover {
+  animation-play-state: paused;
+}
+
+
+/* app/globals.css */
+
+/* --- 3D Flip Utilities --- */
+.perspective-1000 {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
+
+/* --- Animations --- */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-x-in {
+  from { transform: scaleX(0); }
+  to { transform: scaleX(1); }
+}
+
+@keyframes slide-in-right {
+  from { opacity: 0; transform: translateX(30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+@keyframes slide-in-left {
+  from { opacity: 0; transform: translateX(-30px); }
+  to { opacity: 1; transform: translateX(0); }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-scale-x-in {
+  animation: scale-x-in 1s ease-out 0.4s both;
+}
+
+.animate-slide-in-right {
+  animation: slide-in-right 0.5s ease-out;
+}
+
+.animate-slide-in-left {
+  animation: slide-in-left 0.5s ease-out;
+}
+
+
+/* app/globals.css */
+
+/* Floating Animation */
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes float-delayed {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+/* Content Reveal Animations */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-up {
+  from { opacity: 0; transform: scale(0.9); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+/* Utility Classes */
+.animate-float {
+  animation: float 6s ease-in-out infinite;
+}
+
+.animate-float-delayed {
+  animation: float 6s ease-in-out infinite;
+  animation-delay: 3s;
+}
+
+/* These will be triggered by a class in React */
+.animate-on-scroll {
+  opacity: 0; /* Hidden by default */
+}
+
+.is-visible .animate-fade-in-up {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.is-visible .animate-scale-up {
+  animation: scale-up 0.6s ease-out forwards;
+}
+
+/* app/globals.css */
+
+/* --- Infinite Scroll Animation --- */
+@keyframes scroll-left {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); } /* Adjust based on duplication width */
+}
+
+/* --- Shine/Glow Animation --- */
+@keyframes shine-move {
+  0% { transform: translateX(-100%) skewX(-15deg); }
+  100% { transform: translateX(200%) skewX(-15deg); }
+}
+
+/* --- Utilities --- */
+.animate-scroll-left {
+  animation: scroll-left 40s linear infinite;
+  display: flex; /* Ensures the flex row behavior works with the animation */
+  width: max-content; /* Allows the row to extend beyond the screen */
+}
+
+.animate-shine {
+  animation: shine-move 3s ease-in-out infinite;
+}
+
+/* Pause scroll on hover */
+.animate-scroll-left:hover {
+  animation-play-state: paused;
+}
+
+/* app/globals.css */
+
+/* --- Keyframes --- */
+@keyframes fade-in-up {
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes slide-up {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes scale-in {
+  from { opacity: 0; transform: scale(0.95); }
+  to { opacity: 1; transform: scale(1); }
+}
+
+@keyframes shimmer-once {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+/* --- Utilities --- */
+.animate-fade-in {
+  animation: fade-in-up 0.8s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out backwards;
+}
+
+.animate-scale-in {
+  animation: scale-in 0.8s ease-out backwards;
+}
+
+.animate-shimmer-once {
+  animation: shimmer-once 1.5s linear 1;
+}
+
+/* --- Accordion Styles (Native <details>) --- */
+details > summary {
+  list-style: none;
+}
+details > summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Rotate Chevron on Open */
+details[open] summary .chevron-icon {
+  transform: rotate(180deg);
+}
+
+/* Smooth expansion requires grid trick or fixed height. 
+   Native <details> doesn't animate height easily without JS, 
+   but we can use a simple fade-in for the content. */
+details[open] .faq-content {
+  animation: fade-in-up 0.3s ease-out;
+}

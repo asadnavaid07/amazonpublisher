@@ -1,608 +1,193 @@
-
-
-// "use client";
-// import Image from "next/image";
-// import { useState } from "react";
-// import {
-//   ChevronDown,
-//   DollarSign,
-//   Clock,
-//   Shield,
-//   Store,
-//   Lock,
-//   Headphones,
-//   HelpCircle,
-//   Sparkles,
-// } from "lucide-react";
-
-// const faqs = [
-//   {
-//     id: 1,
-//     question: "How much does it cost to publish a book?",
-//     answer:
-//       "Pricing varies depending on services required (ghostwriting, design, marketing, etc.). We offer transparent tiers and custom quotes. During your free consultation we'll review your project and give you clear pricing.",
-//     icon: DollarSign,
-//   },
-//   {
-//     id: 2,
-//     question: "How long does the process take?",
-//     answer:
-//       "A standard journey from concept to published eBook can take 4–6 months. Audio book production or extended marketing campaigns may extend that timeframe. We will create a timeline estimate early on.",
-//     icon: Clock,
-//   },
-//   {
-//     id: 3,
-//     question: "Who owns the rights to my book?",
-//     answer:
-//       "You retain 100% ownership of your intellectual property, royalties and global rights. We provide services — the book remains your property.",
-//     icon: Shield,
-//   },
-//   {
-//     id: 4,
-//     question: "Will my book be available in bookstores?",
-//     answer:
-//       "Yes. We distribute to major online retailers (Amazon, Apple Books, Google Play, Kobo) and can also arrange print-on-demand and wholesalers for brick-and-mortar distribution.",
-//     icon: Store,
-//   },
-//   {
-//     id: 5,
-//     question: "Do you require exclusivity?",
-//     answer:
-//       "No. You are free to publish elsewhere or use other services; we simply provide the services you choose.",
-//     icon: Lock,
-//   },
-//   {
-//     id: 6,
-//     question: "What support do you provide after launch?",
-//     answer:
-//       "We offer post-launch marketing support, help with reader engagement, reviews, social campaigns and book tour planning (virtual or physical).",
-//     icon: Headphones,
-//   },
-// ];
-
-// export default function FAQs() {
-//   const [openId, setOpenId] = useState(null);
-
-//   const toggleFAQ = (id) => {
-//     setOpenId(openId === id ? null : id);
-//   };
-
-//   return (
-//     <section className="py-20 relative overflow-visible ">
-//      {/* ❗ Correct Overlapping Books Block */}
-// <div className="relative flex justify-center w-full z-30 -mt-48 pointer-events-none">
-//   <div className="flex items-end gap-6 perspective-1000" style={{ transformStyle: 'preserve-3d' }}>
-
-//     <Image
-//       src="/cover8.webp"
-//       alt="Book 1"
-//       width={260}
-//       height={380}
-//       className="w-52 h-auto rounded-xl shadow-xl shadow-black/40 transform -rotate-3 hover:rotate-0 transition-all duration-500"
-//     />
-
-//     <Image
-//       src="/cover10.webp"
-//       alt="Book 2"
-//       width={300}
-//       height={420}
-//       className="w-86 h-auto rounded-xl shadow-xl shadow-black/40 transform rotate-2 hover:rotate-0 transition-all duration-500 -mt-6"
-//     />
-
-//     <Image
-//       src="/cover9.webp"
-//       alt="Book 3"
-//       width={260}
-//       height={380}
-//       className="w-92 h-auto rounded-xl shadow-xl shadow-black/40 transform rotate-1 hover:rotate-0 transition-all duration-500"
-//     />
-
-//   </div>
-// </div>
-
-
-
-//       {/* Animated Background */}
-//       <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-//         <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,162,18,0.1),transparent_50%)]" />
-//         <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
-
-//         {/* Floating orbs */}
-//         <div className="absolute top-20 left-10 w-72 h-72 bg-[#ECA212]/10 rounded-full blur-3xl animate-pulse"></div>
-//         <div
-//           className="absolute bottom-20 right-10 w-96 h-96 bg-[#D89010]/10 rounded-full blur-3xl animate-pulse"
-//           style={{ animationDelay: "2s" }}
-//         ></div>
-//       </div>
-
-//       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-//         {/* Header */}
-//         <div className="text-center mb-16 mt-16 animate-fade-in">
-//           <div className="inline-flex items-center justify-center w-16 h-16 bg-[#ECA212]/10 rounded-full mb-6 border border-[#ECA212]/20">
-//             <HelpCircle className="w-8 h-8 text-[#ECA212]" />
-//           </div>
-
-//           <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-//             Frequently Asked Questions
-//           </h2>
-//           <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-//             Everything you need to know about publishing your book with us.
-//           </p>
-//         </div>
-
-//         {/* FAQ Accordion */}
-//         <div className="space-y-4">
-//           {faqs.map((faq, index) => (
-//             <div
-//               key={faq.id}
-//               className="animate-slide-up"
-//               style={{ animationDelay: `${index * 100}ms` }}
-//             >
-//               <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 hover:border-[#ECA212]/30 transition-all duration-300 hover:shadow-xl hover:shadow-[#ECA212]/20">
-//                 <button
-//                   onClick={() => toggleFAQ(faq.id)}
-//                   className="w-full px-6 py-5 flex items-center justify-between text-left transition-colors duration-300"
-//                 >
-//                   <div className="flex items-center gap-4 flex-1">
-//                     <div
-//                       className={`flex-shrink-0 w-10 h-10 rounded-xl bg-[#ECA212]/10 flex items-center justify-center ${
-//                         openId === faq.id
-//                           ? "bg-[#ECA212]/20 border border-[#ECA212]/30"
-//                           : ""
-//                       } transition-all duration-300`}
-//                     >
-//                       <faq.icon className="w-5 h-5 text-[#ECA212]" />
-//                     </div>
-//                     <h3 className="text-lg font-bold text-white pr-4">
-//                       {faq.question}
-//                     </h3>
-//                   </div>
-//                   <div
-//                     className="flex-shrink-0 transition-transform duration-300"
-//                     style={{
-//                       transform:
-//                         openId === faq.id ? "rotate(180deg)" : "rotate(0deg)",
-//                     }}
-//                   >
-//                     <ChevronDown className="w-6 h-6 text-[#ECA212]" />
-//                   </div>
-//                 </button>
-
-//                 <div
-//                   className="overflow-hidden transition-all duration-300 ease-in-out"
-//                   style={{
-//                     maxHeight: openId === faq.id ? "500px" : "0",
-//                     opacity: openId === faq.id ? 1 : 0,
-//                   }}
-//                 >
-//                   <div className="px-6 pb-6 pt-2">
-//                     <div className="pl-14">
-//                       <p className="text-slate-300 leading-relaxed">
-//                         {faq.answer}
-//                       </p>
-//                     </div>
-//                   </div>
-//                 </div>
-//               </div>
-//             </div>
-//           ))}
-//         </div>
-
-//         {/* CTA Section */}
-//         <div
-//           className="mt-16 text-center animate-scale-in"
-//           style={{ animationDelay: "600ms" }}
-//         >
-//           <div className="relative bg-gradient-to-br from-[#ECA212]/10 via-[#ECA212]/5 to-transparent border border-[#ECA212]/20 rounded-3xl p-8 sm:p-12 backdrop-blur-sm overflow-hidden">
-//             {/* Animated background glow */}
-//             <div className="absolute inset-0 bg-gradient-to-r from-[#ECA212]/5 via-[#D89010]/5 to-[#ECA212]/5 animate-shimmer"></div>
-
-//             <div className="relative z-10">
-//               <div className="inline-flex items-center justify-center w-16 h-16 bg-[#ECA212]/10 rounded-full mb-6 border border-[#ECA212]/20 animate-float">
-//                 <Sparkles className="w-8 h-8 text-[#ECA212]" />
-//               </div>
-
-//               <h3 className="text-3xl font-bold text-white mb-4">
-//                 Still Have Questions?
-//               </h3>
-//               <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
-//                 Have a question we haven't answered? Get in touch with our team
-//                 and we'll be happy to help.
-//               </p>
-
-//               <button className="bg-gradient-to-r from-[#ECA212] to-[#D89010] hover:from-[#D89010] hover:to-[#ECA212] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 inline-flex items-center gap-3 shadow-lg hover:shadow-[#ECA212]/50 hover:scale-105">
-//                 Ask Us Anything
-//                 <HelpCircle className="w-5 h-5" />
-//               </button>
-//             </div>
-//           </div>
-//         </div>
-//       </div>
-
-//       <style jsx>{`
-//         @keyframes fade-in {
-//           from {
-//             opacity: 0;
-//             transform: translateY(20px);
-//           }
-//           to {
-//             opacity: 1;
-//             transform: translateY(0);
-//           }
-//         }
-
-//         @keyframes slide-up {
-//           from {
-//             opacity: 0;
-//             transform: translateY(30px);
-//           }
-//           to {
-//             opacity: 1;
-//             transform: translateY(0);
-//           }
-//         }
-
-//         @keyframes scale-in {
-//           from {
-//             opacity: 0;
-//             transform: scale(0.95);
-//           }
-//           to {
-//             opacity: 1;
-//             transform: scale(1);
-//           }
-//         }
-
-//         @keyframes float {
-//           0%,
-//           100% {
-//             transform: translateY(0px);
-//           }
-//           50% {
-//             transform: translateY(-10px);
-//           }
-//         }
-
-//         @keyframes shimmer {
-//           0% {
-//             transform: translateX(-100%);
-//           }
-//           100% {
-//             transform: translateX(100%);
-//           }
-//         }
-
-//         .animate-fade-in {
-//           animation: fade-in 0.8s ease-out;
-//         }
-
-//         .animate-slide-up {
-//           animation: slide-up 0.6s ease-out backwards;
-//         }
-
-//         .animate-scale-in {
-//           animation: scale-in 0.8s ease-out backwards;
-//         }
-
-//         .animate-float {
-//           animation: float 3s ease-in-out infinite;
-//         }
-
-//         .animate-shimmer {
-//           animation: shimmer 8s linear infinite;
-//         }
-//       `}</style>
-//     </section>
-//   );
-// }
-
-
-
-"use client";
 import Image from "next/image";
-import { useState } from "react";
 import {
- ChevronDown,
- DollarSign,
- Clock,
- Shield,
- Store,
- Lock,
- Headphones,
- HelpCircle,
- Sparkles,
+  ChevronDown,
+  DollarSign,
+  Clock,
+  Shield,
+  Store,
+  Lock,
+  Headphones,
+  HelpCircle,
+  Sparkles,
 } from "lucide-react";
 
+// --- Data ---
 const faqs = [
- {
-  id: 1,
-  question: "How much does it cost to publish a book?",
-  answer:
-   "Pricing varies depending on services required (ghostwriting, design, marketing, etc.). We offer transparent tiers and custom quotes. During your free consultation we'll review your project and give you clear pricing.",
-  icon: DollarSign,
- },
- {
-  id: 2,
-  question: "How long does the process take?",
-  answer:
-   "A standard journey from concept to published eBook can take 4–6 months. Audio book production or extended marketing campaigns may extend that timeframe. We will create a timeline estimate early on.",
-  icon: Clock,
- },
- {
-  id: 3,
-  question: "Who owns the rights to my book?",
-  answer:
-   "You retain 100% ownership of your intellectual property, royalties and global rights. We provide services — the book remains your property.",
-  icon: Shield,
- },
- {
-  id: 4,
-  question: "Will my book be available in bookstores?",
-  answer:
-   "Yes. We distribute to major online retailers (Amazon, Apple Books, Google Play, Kobo) and can also arrange print-on-demand and wholesalers for brick-and-mortar distribution.",
-  icon: Store,
- },
- {
-  id: 5,
-  question: "Do you require exclusivity?",
-  answer:
-   "No. You are free to publish elsewhere or use other services; we simply provide the services you choose.",
-  icon: Lock,
- },
- {
-  id: 6,
-  question: "What support do you provide after launch?",
-  answer:
-   "We offer post-launch marketing support, help with reader engagement, reviews, social campaigns and book tour planning (virtual or physical).",
-  icon: Headphones,
- },
+  {
+    id: 1,
+    question: "How much does it cost to publish a book?",
+    answer:
+      "Pricing varies depending on services required (ghostwriting, design, marketing, etc.). We offer transparent tiers and custom quotes. During your free consultation we'll review your project and give you clear pricing.",
+    icon: DollarSign,
+  },
+  {
+    id: 2,
+    question: "How long does the process take?",
+    answer:
+      "A standard journey from concept to published eBook can take 4–6 months. Audio book production or extended marketing campaigns may extend that timeframe. We will create a timeline estimate early on.",
+    icon: Clock,
+  },
+  {
+    id: 3,
+    question: "Who owns the rights to my book?",
+    answer:
+      "You retain 100% ownership of your intellectual property, royalties and global rights. We provide services — the book remains your property.",
+    icon: Shield,
+  },
+  {
+    id: 4,
+    question: "Will my book be available in bookstores?",
+    answer:
+      "Yes. We distribute to major online retailers (Amazon, Apple Books, Google Play, Kobo) and can also arrange print-on-demand and wholesalers for brick-and-mortar distribution.",
+    icon: Store,
+  },
+  {
+    id: 5,
+    question: "Do you require exclusivity?",
+    answer:
+      "No. You are free to publish elsewhere or use other services; we simply provide the services you choose.",
+    icon: Lock,
+  },
+  {
+    id: 6,
+    question: "What support do you provide after launch?",
+    answer:
+      "We offer post-launch marketing support, help with reader engagement, reviews, social campaigns and book tour planning (virtual or physical).",
+    icon: Headphones,
+  },
 ];
 
-// Reusable component for the accordion item to leverage the grid-template-rows animation
-const FAQItem = ({ faq, index, openId, toggleFAQ }) => {
-    const isOpen = openId === faq.id;
-    return (
-        <div
-            key={faq.id}
-            className="animate-slide-up"
-            style={{ animationDelay: `${index * 100}ms` }}
-        >
-            <div className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 hover:border-[#ECA212]/30 transition-all duration-300 hover:shadow-xl hover:shadow-[#ECA212]/20">
-                <button
-                    onClick={() => toggleFAQ(faq.id)}
-                    className="w-full px-6 py-5 flex items-center justify-between text-left transition-colors duration-300"
-                >
-                    <div className="flex items-center gap-4 flex-1">
-                        <div
-                            className={`flex-shrink-0 w-10 h-10 rounded-xl bg-[#ECA212]/10 flex items-center justify-center ${
-                                isOpen
-                                    ? "bg-[#ECA212]/20 border border-[#ECA212]/30"
-                                    : ""
-                            } transition-all duration-300`}
-                        >
-                            <faq.icon className="w-5 h-5 text-[#ECA212]" />
-                        </div>
-                        <h3 className="text-lg font-bold text-white pr-4">
-                            {faq.question}
-                        </h3>
-                    </div>
-                    <div
-                        className="flex-shrink-0 transition-transform duration-300"
-                        style={{
-                            transform: isOpen ? "rotate(180deg)" : "rotate(0deg)",
-                        }}
-                    >
-                        <ChevronDown className="w-6 h-6 text-[#ECA212]" />
-                    </div>
-                </button>
+// --- Sub-Component for clean rendering (Server-Side) ---
+const FAQItem = ({ faq, index }) => {
+  const Icon = faq.icon;
 
-                {/* OPTIMIZATION: Replaced max-height animation with grid-template-rows */}
-                <div
-                    className="grid transition-[grid-template-rows] duration-300 ease-in-out"
-                    style={{
-                        gridTemplateRows: isOpen ? "1fr" : "0fr",
-                    }}
-                >
-                    <div className="overflow-hidden">
-                        <div className="px-6 pb-6 pt-2">
-                            <div className="pl-14">
-                                <p className="text-slate-300 leading-relaxed">
-                                    {faq.answer}
-                                </p>
-                            </div>
-                        </div>
-                    </div>
-                </div>
+  return (
+    <div
+      key={faq.id}
+      className="animate-slide-up group"
+      style={{ animationDelay: `${index * 100}ms` }}
+    >
+      <details className="bg-white/5 backdrop-blur-sm border border-white/10 rounded-2xl overflow-hidden hover:bg-white/10 hover:border-[#ECA212]/30 transition-all duration-300 hover:shadow-xl hover:shadow-[#ECA212]/20 open:bg-white/10 open:border-[#ECA212]/30">
+        <summary className="w-full px-6 py-5 flex items-center justify-between text-left cursor-pointer outline-none">
+          <div className="flex items-center gap-4 flex-1">
+            <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-[#ECA212]/10 flex items-center justify-center group-open:bg-[#ECA212]/20 group-open:border group-open:border-[#ECA212]/30 transition-all duration-300">
+              <Icon className="w-5 h-5 text-[#ECA212]" />
             </div>
+            <h3 className="text-lg font-bold text-white pr-4">
+              {faq.question}
+            </h3>
+          </div>
+          <div className="flex-shrink-0 transition-transform duration-300 chevron-icon">
+            <ChevronDown className="w-6 h-6 text-[#ECA212]" />
+          </div>
+        </summary>
+
+        <div className="px-6 pb-6 pt-2 faq-content">
+          <div className="pl-14">
+            <p className="text-slate-300 leading-relaxed">
+              {faq.answer}
+            </p>
+          </div>
         </div>
-    );
+      </details>
+    </div>
+  );
 };
 
-
 export default function FAQs() {
- const [openId, setOpenId] = useState(null);
-
- const toggleFAQ = (id) => {
-  setOpenId(openId === id ? null : id);
- };
-
- return (
-  <section className="py-20 relative overflow-visible ">
-   {/* ❗ Overlapping Books Block - Optimized Transitions */}
-<div className="relative flex justify-center w-full z-30 -mt-48 pointer-events-none">
- <div className="flex items-end gap-6 perspective-1000" style={{ transformStyle: 'preserve-3d' }}>
-
-  <Image
-   src="/cover8.webp"
-   alt="Book 1"
-   width={260}
-   height={380}
-   className="w-52 h-auto rounded-xl shadow-xl shadow-black/40 transform -rotate-3 hover:rotate-0 transition-transform duration-500" // transition-all -> transition-transform
-  />
-
-  <Image
-   src="/cover10.webp"
-   alt="Book 2"
-   width={300}
-   height={420}
-   className="w-86 h-auto rounded-xl shadow-xl shadow-black/40 transform rotate-2 hover:rotate-0 transition-transform duration-500 -mt-6" // transition-all -> transition-transform
-  />
-
-  <Image
-   src="/cover9.webp"
-   alt="Book 3"
-   width={260}
-   height={380}
-   className="w-92 h-auto rounded-xl shadow-xl shadow-black/40 transform rotate-1 hover:rotate-0 transition-transform duration-500" // transition-all -> transition-transform
-  />
-
- </div>
-</div>
-
-
-
-   {/* Animated Background */}
-   <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
-    <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,162,18,0.1),transparent_50%)]" />
-    <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
-
-    {/* Floating orbs: Removed infinite animation/pulse - it is now a static glow */}
-    <div className="absolute top-20 left-10 w-72 h-72 bg-[#ECA212]/10 rounded-full blur-3xl"></div>
-    <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#D89010]/10 rounded-full blur-3xl"></div>
-   </div>
-
-   <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-    {/* Header */}
-    <div className="text-center mb-16 mt-16 animate-fade-in">
-     <div className="inline-flex items-center justify-center w-16 h-16 bg-[#ECA212]/10 rounded-full mb-6 border border-[#ECA212]/20">
-      <HelpCircle className="w-8 h-8 text-[#ECA212]" />
-     </div>
-
-     <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
-      Frequently Asked Questions
-     </h2>
-     <p className="text-lg text-slate-300 max-w-2xl mx-auto">
-      Everything you need to know about publishing your book with us.
-     </p>
-    </div>
-
-    {/* FAQ Accordion - Using optimized component */}
-    <div className="space-y-4">
-     {faqs.map((faq, index) => (
-      <FAQItem
-                key={faq.id}
-                faq={faq}
-                index={index}
-                openId={openId}
-                toggleFAQ={toggleFAQ}
-            />
-     ))}
-    </div>
-
-    {/* CTA Section */}
-    <div
-     className="mt-16 text-center animate-scale-in"
-     style={{ animationDelay: "600ms" }}
-    >
-     <div className="relative bg-gradient-to-br from-[#ECA212]/10 via-[#ECA212]/5 to-transparent border border-[#ECA212]/20 rounded-3xl p-8 sm:p-12 backdrop-blur-sm overflow-hidden">
-      {/* Animated background glow: Removed infinite repeat */}
-      <div className="absolute inset-0 bg-gradient-to-r from-[#ECA212]/5 via-[#D89010]/5 to-[#ECA212]/5 animate-shimmer-once"></div>
-
-      <div className="relative z-10">
-       <div className="inline-flex items-center justify-center w-16 h-16 bg-[#ECA212]/10 rounded-full mb-6 border border-[#ECA212]/20">
-        <Sparkles className="w-8 h-8 text-[#ECA212]" />
-       </div>
-
-       <h3 className="text-3xl font-bold text-white mb-4">
-        Still Have Questions?
-       </h3>
-       <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
-        Have a question we haven't answered? Get in touch with our team
-        and we'll be happy to help.
-       </p>
-
-       <button className="bg-gradient-to-r from-[#ECA212] to-[#D89010] hover:from-[#D89010] hover:to-[#ECA212] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 inline-flex items-center gap-3 shadow-lg hover:shadow-[#ECA212]/50 hover:scale-105">
-        Ask Us Anything
-        <HelpCircle className="w-5 h-5" />
-       </button>
+  return (
+    <section className="py-20 relative overflow-visible">
+      
+      {/* ❗ Overlapping Books Block - Static Images */}
+      <div className="relative flex justify-center w-full z-30 -mt-48 pointer-events-none">
+        <div className="flex items-end gap-6 perspective-1000" style={{ transformStyle: 'preserve-3d' }}>
+          <Image
+            src="/cover8.webp"
+            alt="Book 1"
+            width={260}
+            height={380}
+            className="w-52 h-auto rounded-xl shadow-xl shadow-black/40 transform -rotate-3 transition-transform duration-500"
+          />
+          <Image
+            src="/cover10.webp"
+            alt="Book 2"
+            width={300}
+            height={420}
+            className="w-86 h-auto rounded-xl shadow-xl shadow-black/40 transform rotate-2 -mt-6 transition-transform duration-500"
+          />
+          <Image
+            src="/cover9.webp"
+            alt="Book 3"
+            width={260}
+            height={380}
+            className="w-92 h-auto rounded-xl shadow-xl shadow-black/40 transform rotate-1 transition-transform duration-500"
+          />
+        </div>
       </div>
-     </div>
-    </div>
-   </div>
 
-   <style jsx>{`
-    @keyframes fade-in {
-     from {
-      opacity: 0;
-      transform: translateY(20px);
-     }
-     to {
-      opacity: 1;
-      transform: translateY(0);
-     }
-    }
+      {/* Animated Background */}
+      <div className="absolute inset-0 z-0 bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_50%,rgba(236,162,18,0.1),transparent_50%)]" />
+        <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
 
-    @keyframes slide-up {
-     from {
-      opacity: 0;
-      transform: translateY(30px);
-     }
-     to {
-      opacity: 1;
-      transform: translateY(0);
-     }
-    }
+        {/* Static Glows */}
+        <div className="absolute top-20 left-10 w-72 h-72 bg-[#ECA212]/10 rounded-full blur-3xl" />
+        <div className="absolute bottom-20 right-10 w-96 h-96 bg-[#D89010]/10 rounded-full blur-3xl" />
+      </div>
 
-    @keyframes scale-in {
-     from {
-      opacity: 0;
-      transform: scale(0.95);
-     }
-     to {
-      opacity: 1;
-      transform: scale(1);
-     }
-    }
-
-    @keyframes float {
-     0%,
-     100% {
-      transform: translateY(0px);
-     }
-     50% {
-      transform: translateY(-10px);
-     }
-    }
-
-        /* OPTIMIZATION: Reduced the shimmer to a single run or use animate-shimmer-once class */
-    @keyframes shimmer {
-     0% {
-      transform: translateX(-100%);
-     }
-     100% {
-      transform: translateX(100%);
-     }
-    }
-
-    .animate-fade-in {
-     animation: fade-in 0.8s ease-out;
-    }
-
-    .animate-slide-up {
-     animation: slide-up 0.6s ease-out backwards;
-    }
-
-    .animate-scale-in {
-     animation: scale-in 0.8s ease-out backwards;
-    }
+      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         
-        /* Removed .animate-float to keep the component static */
+        {/* Header */}
+        <div className="text-center mb-16 mt-16 animate-fade-in">
+          <div className="inline-flex items-center justify-center w-16 h-16 bg-[#ECA212]/10 rounded-full mb-6 border border-[#ECA212]/20">
+            <HelpCircle className="w-8 h-8 text-[#ECA212]" />
+          </div>
 
-        /* OPTIMIZATION: One-time shimmer animation */
-    .animate-shimmer-once {
-     animation: shimmer 1.5s linear 1; /* Runs once */
-    }
-   `}</style>
-  </section>
- );
+          <h2 className="text-4xl sm:text-5xl font-bold text-white mb-4">
+            Frequently Asked Questions
+          </h2>
+          <p className="text-lg text-slate-300 max-w-2xl mx-auto">
+            Everything you need to know about publishing your book with us.
+          </p>
+        </div>
+
+        {/* FAQ Accordion - Native <details> */}
+        <div className="space-y-4">
+          {faqs.map((faq, index) => (
+            <FAQItem key={faq.id} faq={faq} index={index} />
+          ))}
+        </div>
+
+        {/* CTA Section */}
+        <div
+          className="mt-16 text-center animate-scale-in"
+          style={{ animationDelay: "600ms" }}
+        >
+          <div className="relative bg-gradient-to-br from-[#ECA212]/10 via-[#ECA212]/5 to-transparent border border-[#ECA212]/20 rounded-3xl p-8 sm:p-12 backdrop-blur-sm overflow-hidden">
+            {/* Animated background glow (CSS Animation) */}
+            <div className="absolute inset-0 bg-gradient-to-r from-[#ECA212]/5 via-[#D89010]/5 to-[#ECA212]/5 animate-shimmer-once" />
+
+            <div className="relative z-10">
+              <div className="inline-flex items-center justify-center w-16 h-16 bg-[#ECA212]/10 rounded-full mb-6 border border-[#ECA212]/20">
+                <Sparkles className="w-8 h-8 text-[#ECA212]" />
+              </div>
+
+              <h3 className="text-3xl font-bold text-white mb-4">
+                Still Have Questions?
+              </h3>
+              <p className="text-lg text-slate-300 mb-8 max-w-2xl mx-auto">
+                Have a question we haven't answered? Get in touch with our team
+                and we'll be happy to help.
+              </p>
+
+              <button className="bg-gradient-to-r from-[#ECA212] to-[#D89010] hover:from-[#D89010] hover:to-[#ECA212] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all duration-300 inline-flex items-center gap-3 shadow-lg hover:shadow-[#ECA212]/50 hover:scale-105">
+                Ask Us Anything
+                <HelpCircle className="w-5 h-5" />
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
 }
